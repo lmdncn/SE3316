@@ -74,13 +74,13 @@ router.get('/postList',function (req,res){
     
     console.log('rec get req');
     
-    Entry.find(function(err,entries){
+    Entry.find(function(err,entries){ 
         
         if(err){res.send(err);}
         
         res.json(entries);
         
-    });
+    }).sort( { date: -1 } ).limit( 20 );// limit 20 already set by default anyways
     
 });
 
