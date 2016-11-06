@@ -10,7 +10,7 @@ myApp.controller('appCtrl',
     $http.get('/postList').success(function(response){
         
         console.log('got the data');
-        $scope.postList = response.data;
+        $scope.postList = response;
         
     })
     
