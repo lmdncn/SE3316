@@ -9,6 +9,10 @@
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
         
+        
+        <link rel="stylesheet" href="styles.css" type="text/css" />
+        
+        
         <title>Post Love</title>
         
     </head>
@@ -21,32 +25,36 @@
             Share the Love!
         </h1>
         
-       <form class="form-horizontal">
+       <form class="form-horizontal" name="sendF">
            
-          <div class="form-group form-group-lg">
+          <div class="form-group form-group-lg" id='a'>
             <label class="sr-only" for="aliasIn">Alias</label>
              <div class="input-group">
             <div class="input-group-addon">@</div>
-            <input type="text" ng-model="newEntry.alias" class="form-control " id="aliasIn" placeholder="Alias">
+            <input name="A" type="text" ng-model="newEntry.alias" class="form-control " id="aliasIn" placeholder="Alias">
             </div>
           </div>
           
-          <div class="form-group form-group-lg">
+          <div class="form-group form-group-lg" id='t'>
             <label class="sr-only" for="entryIn">Post</label>
-            <textarea rows="3" ng-model="newEntry.text" class="form-control " id="entryIn" placeholder="What do you love?"></textarea>
+            <textarea name="T" maxlength="200" rows="4" ng-model="newEntry.text" class="form-control " id="entryIn" placeholder="What do you love?"></textarea>
           </div>
           
-          <button class="btn btn-primary btn-lg btn-block" ng-click="newPost()">Send</button>
+          <button class="btn btn-primary btn-lg btn-block" ng-click="validateEntry()">Send</button>
           
         </form>
         
-        <div class= "post container" ng-repeat="post in postList">
+        <div class= "post container" ng-repeat="post in showList">
             
         <h2 class="user">
             {{post.alias}}
-            <small>{{post.date}}</small>
+            
         </h2>
         
+        <small>
+            {{post.date}}
+            </small>
+            
         <p class="text" >
            {{post.text}}
         </p>

@@ -47,7 +47,7 @@ app.use(express.static(__dirname+'/public'));
 
 
 //post something (accessed at POSThttps://se33316a-lmdncn.c9users.io/api/home)
-router.post('/postList',function(req,res){
+router.post('/List',function(req,res){
     
     console.log(req.body);
     
@@ -55,7 +55,7 @@ router.post('/postList',function(req,res){
     
     entry.alias = req.body.alias; //set the entrys userName (coming from request)
     entry.text = req.body.text; //set the entrys post data
-    entry.date = Date("<YYYY-mm-ddTHH:MM:ssZ>"); //set the entrys date to current date time
+    entry.date = Date(); //set the entrys date to current date time
     
     
     //save entry (checking for errors)
@@ -70,7 +70,7 @@ router.post('/postList',function(req,res){
 });
 
 
-router.get('/postList',function (req,res){
+router.get('/List',function (req,res){
     
     console.log('rec get req');
     
