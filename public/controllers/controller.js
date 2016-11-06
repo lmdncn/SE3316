@@ -43,8 +43,23 @@ myApp.controller('appCtrl',
         angular.element( document.querySelector( '#t' ) ).addClass("has-error");}
         else{angular.element( document.querySelector( '#t' ) ).removeClass("has-error");}
         
+        
+        if(!valid){alert("Your post lacks a feild!"); return;}
+
+console.log("VAL IS " +  $scope.T);
+
+        // if(((str.indexOf("/#")) <= -1)){
+        //     valid = false;
+        //     alert("You need a hashtag #");
+        //     return;
+        // }
+        
+        
         if(valid){newPost();}
         else{alert("Your post lacks a feild!");}
+    
+    
+    
     
         return;
     };
