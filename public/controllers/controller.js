@@ -7,7 +7,7 @@ myApp.controller('appCtrl',
   {
     console.log("Hello from app controller");
     
-    $http.get('/postList').success(function(response){
+    $http.get('/api/postList').success(function(response){
         
         console.log('got the data');
         $scope.postList = response;

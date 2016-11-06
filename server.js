@@ -43,53 +43,11 @@ router.use(function(req,res,next){
     //Get static files
 app.use(express.static(__dirname+'/public'));
 
-app.get('/postList',function (req,res){
-    
-    console.log('rec get req');
-    
-     post1 = {
-        
-        alias: "kyle",
-        text: "i love pineapple cus they are the best pen pineapple apple pen.",
-        date: Date()
-    };
-    post2 = {
-        
-        alias: "billy",
-        text: "This class is the best class ever. Omg i love everything, we are all so happy",
-        date: Date()
-        
-    };
-    post3 = {
-        
-        alias: "lovedove",
-        text: "You guys are all the best everrrrr",
-        date: Date()
-        
-    };
-    
-    var postList = [post1,post2,post3];
-    
-    res.json(postList);
-    
-});
 
 
-//test route to make sure everything is working (acceseed at GET Apllication https://se33316a-lmdncn.c9users.io)
-
-router.get('/',function(req, res){
-        res.json({message:'Welcome to the compliment blog, where you write about something you love!'});
-});
-
-//more rouutes for api will go here
-
-
-//on routes that en in /home ------------------------------
-
-router.route('/home')
 
 //post something (accessed at POSThttps://se33316a-lmdncn.c9users.io/api/home)
-.post(function(req,res){
+router.post(function(req,res){
     
     var entry = new Entry(); //create new instance of the bear model
     
@@ -109,7 +67,11 @@ router.route('/home')
     
 })
 
-.get(function(req,res){
+
+router.get('/postList',function (req,res){
+    
+    console.log('rec get req');
+    
     Entry.find(function(err,entries){
         
         if(err){res.send(err);}
@@ -118,12 +80,37 @@ router.route('/home')
         
     });
     
+    //  post1 = {
+        
+    //     alias: "kyle",
+    //     text: "i love pineapple cus they are the best pen pineapple apple pen.",
+    //     date: Date()
+    // };
+    // post2 = {
+        
+    //     alias: "billy",
+    //     text: "This class is the best class ever. Omg i love everything, we are all so happy",
+    //     date: Date()
+        
+    // };
+    // post3 = {
+        
+    //     alias: "lovedove",
+    //     text: "You guys are all the best everrrrr",
+    //     date: Date()
+        
+    // };
+    
+    // var postList = [post1,post2,post3];
+    
+    // res.json(postList);
+    
 });
 
 
 //routes that end in /bear/:bear_id ----------------------------
 
-router.route('/home/:entry_id')
+router.route('/:entry_id')
 
 .get(function(req,res){
     
