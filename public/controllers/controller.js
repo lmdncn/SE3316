@@ -20,8 +20,13 @@ myApp.controller('appCtrl',
     
     refresh();
     
-    var newPost = function(){
+    var newPost = function(hashtagKey){
+        
+        $scope.newEntry["hashtag"] = hashtagKey;
+        
+        console.log('New Entry is : ');
         console.log($scope.newEntry);
+        
         $http.post('/api/List',$scope.newEntry).success(function(response){
         console.log(response);
         refresh();
@@ -35,32 +40,34 @@ myApp.controller('appCtrl',
     var a = document.forms["sendF"]["A"].value;
     var t = document.forms["sendF"]["T"].value;
     
-    if (a == null || a == "") { valid = false;
-        angular.element( document.querySelector( '#a' ) ).addClass("has-error");}
-        else{angular.element( document.querySelector( '#a' ) ).removeClass("has-error");}
+    if (a == null || a == ""||t == null || t == "")
+    
+    {
+        alert("Your post lacks a feild!"); return;
+    }
+    
         
-        if(t == null || t == ""){ valid = false;
-        angular.element( document.querySelector( '#t' ) ).addClass("has-error");}
-        else{angular.element( document.querySelector( '#t' ) ).removeClass("has-error");}
-        
-        
-        if(!valid){alert("Your post lacks a feild!"); return;}
+        //Search for Hashtag
+        var tagindex = t.search("#");
 
-        if(((t.indexOf("/#")) <= -1)){
+        if(!(tagindex>=0)){
             valid = false;
             alert("You need a hashtag #");
             return;
         }
+
+        //Has a hashtag so find space after hashtag
         
+        var nextSpace = t.substring(tagindex).search(" ");
         
-        if(valid){newPost();}
-        else{alert("Your post lacks a feild!");}
+        //copy the string inbetween to save as key
+        var hashtagKey =  t.substr(tagindex,nextSpace); //nextspcae is the ditance inbetween # and ' '
+            
+            newPost(hashtagKey);
+
+        return;};
+  
     
-    
-    
-    
-        return;
-    };
          
      
      

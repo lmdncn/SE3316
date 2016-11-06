@@ -56,7 +56,7 @@ router.post('/List',function(req,res){
     entry.alias = req.body.alias; //set the entrys userName (coming from request)
     entry.text = req.body.text; //set the entrys post data
     entry.date = Date(); //set the entrys date to current date time
-    
+    entry.hashtag = req.body.hashtag;
     
     //save entry (checking for errors)
     

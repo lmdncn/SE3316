@@ -2,7 +2,7 @@
 
 <html ng-app="PostLove">
     <head>
-        <link rel="stylesheet" href="styles.css" type="text/css" />
+      
         
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -10,11 +10,11 @@
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
         
+        <link rel="stylesheet" href="styles.css" type="text/css" />
         
         
         
-        
-        <title>Post Love</title>
+        <title>PostPaper.com</title>
         
     </head>
     
@@ -23,7 +23,7 @@
             
         
         <h1>
-            Share the Love!
+            Post Paper
         </h1>
         
        <form class="form-horizontal" name="sendF">
@@ -32,15 +32,15 @@
             <label class="sr-only" for="aliasIn">Alias</label>
              <div class="input-group">
             <div class="input-group-addon">@</div>
-            <input name="A" type="text" ng-model="newEntry.alias" class="form-control " id="aliasIn" placeholder="Alias">
+            <input required name="A" maxlength="15" type="text" ng-model="newEntry.alias" class="form-control " id="aliasIn" placeholder="Alias">
             </div>
           </div>
           
           <div class="form-group form-group-lg" id='t'>
             <label class="sr-only" for="entryIn">Post</label>
             <div class="input-group">
-            <textarea name="T" maxlength="200" rows="4" ng-model="newEntry.text" class="form-control " id="entryIn" placeholder="What do you love?"></textarea>
-              <div class="input-group-addon"><button class=" btn btn-primary btn-block" ng-click="validateEntry()">Send</button>
+            <textarea required name="T" maxlength="200" rows="4" ng-model="newEntry.text" class="form-control " id="entryIn" placeholder="Write it on paper..."></textarea>
+              <div class="input-group-addon"><button ng-click="validateEntry()">Send</button>
           </div></div>
           </div>
           
@@ -48,23 +48,32 @@
           
         </form>
         
-        <div class= "post container" ng-repeat="post in showList">
+        
+        <div id="scroll">
             
+            
+            
+        <div class= "post container row" ng-repeat="post in showList">
+        
+        <div class = "col-lg-4 vcenter">
         <h2 class="user">
-            {{post.alias}}
+            @{{post.alias}}
             
         </h2>
-        
-        <small>
-            {{post.date}}
-            </small>
-            
-        <p class="text" >
-           {{post.text}}
-        </p>
-        
         </div>
         
+         <div class = "col-lg-8 vcenter">
+               <p class="text" >
+               {{post.text}}
+               </p>
+        </div>
+        
+         <small class="visible-lg">
+            {{post.date}}
+            </small>
+        
+        </div>
+        </div>
         
         </div>
         
