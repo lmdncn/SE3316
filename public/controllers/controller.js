@@ -12,7 +12,18 @@ myApp.controller('appCtrl',
         console.log('got the data');
         $scope.postList = response;
         
-    })
+    });
+    
+    
+    
+    $scope.newPost = function(){
+        
+        console.log($scope.newEntry);
+        
+    };
+    
+    
+    
     
 
 });

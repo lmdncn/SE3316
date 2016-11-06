@@ -85,57 +85,57 @@ router.get('/postList',function (req,res){
 
 //routes that end in /bear/:bear_id ----------------------------
 
-router.route('/:entry_id')
+// router.route('/:entry_id')
 
-.get(function(req,res){
+// .get(function(req,res){
     
-    Entry.findById(req.params.entry_id,function(err,entry){
+//     Entry.findById(req.params.entry_id,function(err,entry){
         
-        if(err){res.send(err);}
+//         if(err){res.send(err);}
         
-        res.json(entry);
+//         res.json(entry);
         
-    });
+//     });
     
     
-})
+// })
 
 
-.put(function (req,res){ // Update(Edit) the posting
+// .put(function (req,res){ // Update(Edit) the posting
     
-     Entry.findById(req.params.entry_id,function(err,entry){
+//      Entry.findById(req.params.entry_id,function(err,entry){
         
-        if(err){res.send(err);}
+//         if(err){res.send(err);}
         
-        entry.text = req.body.text;
+//         entry.text = req.body.text;
         
         
-        entry.save(function(err){
+//         entry.save(function(err){
             
-            if (err){res.send(err);}
+//             if (err){res.send(err);}
             
-            res.json({message:'Entry Edited!'});
+//             res.json({message:'Entry Edited!'});
             
-        });
+//         });
         
-    });
+//     });
     
     
-})
+// })
 
-.delete(function(req,res){
+// .delete(function(req,res){
     
-    Entry.remove({
+//     Entry.remove({
         
-        _id: req.params.entry_id},function (err,entry){
+//         _id: req.params.entry_id},function (err,entry){
             
-            if(err){res.send(err);}
+//             if(err){res.send(err);}
             
-            res.json({message:'Post successfully deleted!'});
+//             res.json({message:'Post successfully deleted!'});
             
-        });
+//         });
     
-});
+// });
 
 
 

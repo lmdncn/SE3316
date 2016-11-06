@@ -21,22 +21,22 @@
             Share the Love!
         </h1>
         
-       <form method="post" action="" class="form-horizontal">
+       <form class="form-horizontal">
            
           <div class="form-group form-group-lg">
             <label class="sr-only" for="aliasIn">Alias</label>
              <div class="input-group">
             <div class="input-group-addon">@</div>
-            <input type="text" class="form-control " id="aliasIn" placeholder="Alias">
+            <input type="text" ng-model="newEntry.alias" class="form-control " id="aliasIn" placeholder="Alias">
             </div>
           </div>
           
           <div class="form-group form-group-lg">
             <label class="sr-only" for="entryIn">Post</label>
-            <textarea rows="3" class="form-control " id="entryIn" placeholder="What do you love?"></textarea>
+            <textarea rows="3" ng-model="newEntry.text" class="form-control " id="entryIn" placeholder="What do you love?"></textarea>
           </div>
           
-          <button type="submit" class="btn btn-primary btn-lg btn-block">Send</button>
+          <button class="btn btn-primary btn-lg btn-block" ng-click="newPost()">Send</button>
           
         </form>
         
