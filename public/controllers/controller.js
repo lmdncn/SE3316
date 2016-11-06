@@ -46,13 +46,11 @@ myApp.controller('appCtrl',
         
         if(!valid){alert("Your post lacks a feild!"); return;}
 
-console.log("VAL IS " +  $scope.T);
-
-        // if(((str.indexOf("/#")) <= -1)){
-        //     valid = false;
-        //     alert("You need a hashtag #");
-        //     return;
-        // }
+        if(((t.indexOf("/#")) <= -1)){
+            valid = false;
+            alert("You need a hashtag #");
+            return;
+        }
         
         
         if(valid){newPost();}
