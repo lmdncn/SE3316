@@ -22,7 +22,7 @@ var port = process.env.PORT || 8080; //Set the port
 
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/bears'); //connect to the db
+mongoose.connect('mongodb://localhost:27017/PostLove'); //connect to the db
 
 var Entry = require('./app/models/entry');
 
@@ -47,12 +47,12 @@ app.use(express.static(__dirname+'/public'));
 
 
 //post something (accessed at POSThttps://se33316a-lmdncn.c9users.io/api/home)
-router.post(function(req,res){
+app.post('/',function(req,res){
     
     var entry = new Entry(); //create new instance of the bear model
     
-    entry.alias = req.body.userName; //set the entrys userName (coming from request)
-    entry.text = req.body.post; //set the entrys post data
+    entry.alias = req.body.aliasIn; //set the entrys userName (coming from request)
+    entry.text = req.body.entryIn; //set the entrys post data
     entry.date = Date("<YYYY-mm-ddTHH:MM:ssZ>"); //set the entrys date to current date time
     
     
@@ -61,7 +61,7 @@ router.post(function(req,res){
     entry.save(function(err){
         if(err){res.send(err);}
         
-        res.json({message:'Posted!'});
+        res.json({message:'Posted!'}); 
     });
     
     
@@ -79,31 +79,6 @@ router.get('/postList',function (req,res){
         res.json(entries);
         
     });
-    
-    //  post1 = {
-        
-    //     alias: "kyle",
-    //     text: "i love pineapple cus they are the best pen pineapple apple pen.",
-    //     date: Date()
-    // };
-    // post2 = {
-        
-    //     alias: "billy",
-    //     text: "This class is the best class ever. Omg i love everything, we are all so happy",
-    //     date: Date()
-        
-    // };
-    // post3 = {
-        
-    //     alias: "lovedove",
-    //     text: "You guys are all the best everrrrr",
-    //     date: Date()
-        
-    // };
-    
-    // var postList = [post1,post2,post3];
-    
-    // res.json(postList);
     
 });
 
