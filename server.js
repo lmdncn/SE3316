@@ -47,12 +47,14 @@ app.use(express.static(__dirname+'/public'));
 
 
 //post something (accessed at POSThttps://se33316a-lmdncn.c9users.io/api/home)
-app.post('/',function(req,res){
+router.post('/postList',function(req,res){
+    
+    console.log(req.body);
     
     var entry = new Entry(); //create new instance of the bear model
     
-    entry.alias = req.body.aliasIn; //set the entrys userName (coming from request)
-    entry.text = req.body.entryIn; //set the entrys post data
+    entry.alias = req.body.alias; //set the entrys userName (coming from request)
+    entry.text = req.body.text; //set the entrys post data
     entry.date = Date("<YYYY-mm-ddTHH:MM:ssZ>"); //set the entrys date to current date time
     
     
@@ -61,11 +63,11 @@ app.post('/',function(req,res){
     entry.save(function(err){
         if(err){res.send(err);}
         
-        res.json({message:'Posted!'}); 
+        res.json(entry); 
     });
     
     
-})
+});
 
 
 router.get('/postList',function (req,res){
