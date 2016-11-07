@@ -1,19 +1,37 @@
 
+
+
+
+
+
+
+
+
 // App Controller
-var myApp = angular.module('PostLove', []);
+var myApp = angular.module('PostPaperNG', []);
+
+var up = true; //semephore so it doesnt update when posting and update when updating
 
 myApp.controller('appCtrl', 
   function($scope,$http) 
   {
-    console.log("Hello from app controller");
-    
+         window.setInterval(function(){
+             if(up){
+         update();}
+        }, 1000);
+  
     var refresh = function(){
-    $http.get('/api/List').success(function(response){
-        
-        console.log('got the data');
-        $scope.showList = response;
+        up = false;
+        update();
         $scope.newEntry="";
-        
+        up = true;
+        };
+    
+    
+     var update = function(){
+    $http.get('/api/List').success(function(response){
+        $scope.showList = response;
+        console.log("Updated");
     });
     
     };
@@ -21,7 +39,7 @@ myApp.controller('appCtrl',
     refresh();
     
     var newPost = function(hashtagKey){
-        
+        up = false;
         $scope.newEntry["hashtag"] = hashtagKey;
         
         console.log('New Entry is : ');
@@ -30,12 +48,14 @@ myApp.controller('appCtrl',
         $http.post('/api/List',$scope.newEntry).success(function(response){
         console.log(response);
         refresh();
+        up = true;
     });
     
     };
     
     
     $scope.validateEntry= function(){
+        
     var valid = true;
     var a = document.forms["sendF"]["A"].value;
     var t = document.forms["sendF"]["T"].value;

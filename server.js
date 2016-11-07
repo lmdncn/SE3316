@@ -22,7 +22,7 @@ var port = process.env.PORT || 8080; //Set the port
 
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/PostLove'); //connect to the db
+mongoose.connect('mongodb://localhost:27017/PostPaperDB'); //connect to the db
 
 var Entry = require('./app/models/entry');
 
@@ -34,8 +34,7 @@ var router = express.Router();  //get instance of express router
 
 router.use(function(req,res,next){
     //do logging
-    
-    console.log('Something is happening');
+
     next(); //make sure we go to the nest routes and don't stop here
     
 });
@@ -72,8 +71,7 @@ router.post('/List',function(req,res){
 
 router.get('/List',function (req,res){
     
-    console.log('rec get req');
-    
+    console.log('getting her');
     Entry.find(function(err,entries){ 
         
         if(err){res.send(err);}

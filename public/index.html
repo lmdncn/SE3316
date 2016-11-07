@@ -1,6 +1,6 @@
-<!DOCTPYE>
+<!DOCTYPE>
 
-<html ng-app="PostLove">
+<html ng-app="PostPaperNG">
     <head>
       
         
@@ -38,10 +38,11 @@
           
           <div class="form-group form-group-lg" id='t'>
             <label class="sr-only" for="entryIn">Post</label>
-            <div class="input-group">
+            
             <textarea required name="T" maxlength="200" rows="4" ng-model="newEntry.text" class="form-control " id="entryIn" placeholder="Write it on paper..."></textarea>
-              <div class="input-group-addon"><button ng-click="validateEntry()">Send</button>
-          </div></div>
+            <button ng-click="validateEntry()">Send</button>
+          
+          </div>
           </div>
           
           
