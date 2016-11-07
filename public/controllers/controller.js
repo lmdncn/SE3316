@@ -7,12 +7,18 @@ myApp.controller('appCtrl',
   {
     console.log("Hello from app controller");
     
+    
+    window.setInterval(function(){
+             refresh();
+       }, 1000);
+    
+    
     var refresh = function(){
     $http.get('/api/List').success(function(response){
         
         console.log('got the data');
         $scope.showList = response;
-        $scope.newEntry="";
+        
         
     });
     
@@ -30,6 +36,7 @@ myApp.controller('appCtrl',
         $http.post('/api/List',$scope.newEntry).success(function(response){
         console.log(response);
         refresh();
+        $scope.newEntry="";
     });
     
     };
