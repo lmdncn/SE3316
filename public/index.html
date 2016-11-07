@@ -52,7 +52,7 @@
             
             
             
-        <div class= "post container row" ng-repeat="post in showList">
+        <div class= "post container row" ng-repeat="post in showList | orderBy: _id: true | limitTo:20">
         
         <div class = "col-lg-4 vcenter">
         <h2 class="user">

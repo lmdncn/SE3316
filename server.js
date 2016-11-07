@@ -111,7 +111,7 @@ router.get('/List',function (req,res){
         
         res.json(entries);
         
-    }).sort( { date: -1 } ).limit( 20 );// limit 20 already set by default anyways
+    });//.sort( { date: -1 } ).limit( 20 );---- done using angular class in html instead
     
 });
 
