@@ -46,6 +46,37 @@ app.use(express.static(__dirname+'/public'));
 
 
 
+
+//SANITIZE -----------------------------------------------------------------------------------------
+
+var tagBody = '(?:[^"\'>]|"[^"]*"|\'[^\']*\')*';
+
+var tagOrComment = new RegExp(
+    '<(?:'
+    // Comment body.
+    + '!--(?:(?:-*[^->])*--+|-?)'
+    // Special "raw text" elements whose content should be elided.
+    + '|script\\b' + tagBody + '>[\\s\\S]*?</script\\s*'
+    + '|style\\b' + tagBody + '>[\\s\\S]*?</style\\s*'
+    // Regular name
+    + '|/?[a-z]'
+    + tagBody
+    + ')>',
+    'gi');
+function removeTags(html) {
+  var oldHtml;
+  do {
+    oldHtml = html;
+    html = html.replace(tagOrComment, '');
+  } while (html !== oldHtml);
+  return html.replace(/</g, '&lt;');
+}
+//End of SANITIZE -----------------------------------------------------------------------------------------
+
+
+
+
+
 //post something (accessed at POSThttps://se33316a-lmdncn.c9users.io/api/home)
 router.post('/List',function(req,res){
     
@@ -53,10 +84,10 @@ router.post('/List',function(req,res){
     
     var entry = new Entry(); //create new instance of the bear model
     
-    entry.alias = req.body.alias; //set the entrys userName (coming from request)
-    entry.text = req.body.text; //set the entrys post data
+    entry.alias = removeTags(req.body.alias); //set the entrys userName (coming from request)
+    entry.text = removeTags(req.body.text); //set the entrys post data
     entry.date = Date(); //set the entrys date to current date time
-    entry.hashtag = req.body.hashtag;
+    entry.hashtag = removeTags(req.body.hashtag);
     
     //save entry (checking for errors)
     
