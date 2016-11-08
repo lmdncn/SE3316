@@ -1,6 +1,6 @@
 <!DOCTPYE>
 
-<html ng-app="PostLove">
+<html ng-app="PostBlog">
     <head>
       
         
@@ -51,8 +51,9 @@
         <div id="scroll">
             
             
-            
-        <div class= "post container row" ng-repeat="post in showList | orderBy: _id: true | limitTo:20">
+        <!--All the posts! writen by ng-repeat-->
+        <div class= "post container row" ng-repeat="post in showList">
+            <!-- could add : | orderBy: _id: true | limitTo:20    to ng-repeat to handle display 20 and order in front end, instead server doing it in back end, only loading 20 post-->
         
         <div class = "col-lg-4 vcenter">
         <h2 class="user">
@@ -76,9 +77,15 @@
         
         </div>
         
+        <!--Angular-->
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>  
+        
+        <!--JQUERY-->
         <script src="https://code.jquery.com/jquery-3.1.1.slim.js"  integrity="sha256-5i/mQ300M779N2OVDrl16lbohwXNUdzL/R2aVUXyXWA="  crossorigin="anonymous"></script>
+        
+        <!--Angular Controller JS FrontEnd-->
         <script type="text/javascript" src="controllers/controller.js"></script>
+      
         
     </body>
     

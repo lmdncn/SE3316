@@ -10,6 +10,7 @@ var app = express(); //define app using express
 
 var bodyParser = require('body-parser');
 
+var sanitizer = require('sanitizer');
 
 //configure app to use bodyParser()
 //this will let us get the data from a POST
@@ -22,7 +23,7 @@ var port = process.env.PORT || 8080; //Set the port
 
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/PostLove'); //connect to the db
+mongoose.connect('mongodb://localhost:27017/PostBlog'); //connect to the db
 
 var Entry = require('./app/models/entry');
 
@@ -47,31 +48,29 @@ app.use(express.static(__dirname+'/public'));
 
 
 
-//SANITIZE -----------------------------------------------------------------------------------------
+//This could be used to remove HTML tags
+// var tagBody = '(?:[^"\'>]|"[^"]*"|\'[^\']*\')*';
+// var tagOrComment = new RegExp(
+//     '<(?:'
+//     // Comment body.
+//     + '!--(?:(?:-*[^->])*--+|-?)'
+//     // Special "raw text" elements whose content should be elided.
+//     + '|script\\b' + tagBody + '>[\\s\\S]*?</script\\s*'
+//     + '|style\\b' + tagBody + '>[\\s\\S]*?</style\\s*'
+//     // Regular name
+//     + '|/?[a-z]'
+//     + tagBody
+//     + ')>',
+//     'gi');
+// function removeTags(html) {
+//   var oldHtml;
+//   do {
+//     oldHtml = html;
+//     html = html.replace(tagOrComment, '');
+//   } while (html !== oldHtml);
+//   return html.replace(/</g, '&lt;');
+// }
 
-var tagBody = '(?:[^"\'>]|"[^"]*"|\'[^\']*\')*';
-
-var tagOrComment = new RegExp(
-    '<(?:'
-    // Comment body.
-    + '!--(?:(?:-*[^->])*--+|-?)'
-    // Special "raw text" elements whose content should be elided.
-    + '|script\\b' + tagBody + '>[\\s\\S]*?</script\\s*'
-    + '|style\\b' + tagBody + '>[\\s\\S]*?</style\\s*'
-    // Regular name
-    + '|/?[a-z]'
-    + tagBody
-    + ')>',
-    'gi');
-function removeTags(html) {
-  var oldHtml;
-  do {
-    oldHtml = html;
-    html = html.replace(tagOrComment, '');
-  } while (html !== oldHtml);
-  return html.replace(/</g, '&lt;');
-}
-//End of SANITIZE -----------------------------------------------------------------------------------------
 
 
 
@@ -84,10 +83,21 @@ router.post('/List',function(req,res){
     
     var entry = new Entry(); //create new instance of the bear model
     
-    entry.alias = removeTags(req.body.alias); //set the entrys userName (coming from request)
-    entry.text = removeTags(req.body.text); //set the entrys post data
+    //This removes HTML Tags, instead im using angular $validate
+    // entry.alias = removeTags(req.body.alias); //set the entrys userName (coming from request)
+    // entry.text = removeTags(req.body.text); //set the entrys post data
+    // entry.date = Date(); //set the entrys date to current date time
+    // entry.hashtag = removeTags(req.body.hashtag);
+    
+    
+    
+    //Sanitization using npm sanitize----------------------------------------------------------------------
+    entry.alias = sanitizer.sanitize(req.body.alias); //set the entrys userName (coming from request)
+    entry.text = sanitizer.sanitize(req.body.text); //set the entrys post data
     entry.date = Date(); //set the entrys date to current date time
-    entry.hashtag = removeTags(req.body.hashtag);
+    entry.hashtag = sanitizer.sanitize(req.body.hashtag);
+    
+    
     
     //save entry (checking for errors)
     
@@ -111,7 +121,7 @@ router.get('/List',function (req,res){
         
         res.json(entries);
         
-    });//.sort( { date: -1 } ).limit( 20 );---- done using angular class in html instead
+    }).sort( { date: -1 } ).limit( 20 );
     
 });
 

@@ -1,6 +1,6 @@
 
 // App Controller
-var myApp = angular.module('PostLove', []);
+var myApp = angular.module('PostBlog', []);
 
 myApp.controller('appCtrl', 
   function($scope,$http) 
@@ -43,7 +43,6 @@ myApp.controller('appCtrl',
     
     
     $scope.validateEntry= function(){
-    var valid = true;
     var a = document.forms["sendF"]["A"].value;
     var t = document.forms["sendF"]["T"].value;
     
@@ -54,17 +53,23 @@ myApp.controller('appCtrl',
     }
     
         
-        //Search for Hashtag
+        //Search for Hashtag for additional function that hashtag doesn't have to be first
+        //var tagindex = t.search("#");
+        // if(!(tagindex>=0)){
+        //     valid = false;
+        //     alert("You need a hashtag #");
+        //     return;
+        // }
+        
         var tagindex = t.search("#");
-
-        if(!(tagindex>=0)){
-            valid = false;
-            alert("You need a hashtag #");
+        if(tagindex!=0){
+            alert("You need a hashtag:# st the start of your post!");
             return;
         }
-
-        //Has a hashtag so find space after hashtag
         
+        //This next part also workes for additional function of hashtag later in input
+        
+        //Has a hashtag so find space after hashtag
         var nextSpace = t.substring(tagindex).search(" ");
         
         //copy the string inbetween to save as key
