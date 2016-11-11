@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {CoursesComponent} from './courses/courses.component'
+import {CoursesComponent} from './courses/courses.component';
+import{ToolbarComponent} from './toolbar/toolbar.component';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,5 @@ import {CoursesComponent} from './courses/courses.component'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  title = 'Course Halo';
 }

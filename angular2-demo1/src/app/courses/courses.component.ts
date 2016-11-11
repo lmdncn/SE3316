@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import{CourseService} from '../course.service';
-import{AutoGrowDirective} from '../auto-grow.directive'
 
 @Component({
   selector: 'app-courses',
@@ -12,7 +11,6 @@ import{AutoGrowDirective} from '../auto-grow.directive'
 
 export class CoursesComponent implements OnInit {
 
-  title = "Title of the courses page!";
   courses;
   constructor(courseService: CourseService) { 
     this.courses = courseService.getCourses();
