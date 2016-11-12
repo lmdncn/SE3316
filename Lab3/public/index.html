@@ -1,0 +1,94 @@
+<!DOCTPYE>
+
+<html ng-app="PostBlog">
+    <head>
+      
+        
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        
+        <link rel="stylesheet" href="styles.css" type="text/css" />
+        
+        
+        
+        <title>PostPaper.com</title>
+        
+    </head>
+    
+    <body>
+        <div class="container-fluid" ng-controller="appCtrl">
+            
+        
+        <h1>
+            Post Paper
+        </h1>
+        
+       <form class="form-horizontal" name="sendF">
+           
+          <div class="form-group form-group-lg" id='a'>
+            <label class="sr-only" for="aliasIn">Alias</label>
+             <div class="input-group">
+            <div class="input-group-addon">@</div>
+            <input required name="A" maxlength="15" type="text" ng-model="newEntry.alias" class="form-control " id="aliasIn" placeholder="Alias">
+            </div>
+          </div>
+          
+          <div class="form-group form-group-lg" id='t'>
+            <label class="sr-only" for="entryIn">Post</label>
+            <textarea required name="T" maxlength="200" rows="4" ng-model="newEntry.text" class="form-control " id="entryIn" placeholder="Write it on paper..."></textarea>
+             <button ng-click="validateEntry()">Send</button>
+          
+          </div>
+          
+          
+          
+        </form>
+        
+        
+        <div id="scroll">
+            
+            
+        <!--All the posts! writen by ng-repeat-->
+        <div class= "post container row" ng-repeat="post in showList">
+            <!-- could add : | orderBy: _id: true | limitTo:20    to ng-repeat to handle display 20 and order in front end, instead server doing it in back end, only loading 20 post-->
+        
+        <div class = "col-lg-4 vcenter">
+        <h2 class="user">
+            @{{post.alias}}
+            
+        </h2>
+        </div>
+        
+         <div class = "col-lg-8 vcenter">
+               <p class="text" >
+               {{post.text}}
+               </p>
+        </div>
+        
+         <small class="visible-lg">
+            {{post.date}}
+            </small>
+        
+        </div>
+        </div>
+        
+        </div>
+        
+        <!--Angular-->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>  
+        
+        <!--JQUERY-->
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.js"  integrity="sha256-5i/mQ300M779N2OVDrl16lbohwXNUdzL/R2aVUXyXWA="  crossorigin="anonymous"></script>
+        
+        <!--Angular Controller JS FrontEnd-->
+        <script type="text/javascript" src="controllers/controller.js"></script>
+      
+        
+    </body>
+    
+    
+    
+</html>

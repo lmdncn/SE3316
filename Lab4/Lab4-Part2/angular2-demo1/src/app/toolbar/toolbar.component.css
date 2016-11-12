@@ -1,0 +1,23 @@
+div#manage-bar{
+    width: 60%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+button{
+    width: 15rem;
+}
+
+input{
+    width:15rem;
+}
+
+#textentry{
+    text-align:right;
+}
+@media(max-width:768px){
+
+#textentry{
+    text-align:center;
+} 
+}

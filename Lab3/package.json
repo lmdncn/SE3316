@@ -1,0 +1,23 @@
+{
+  "name": "lab3",
+  "version": "1.0.0",
+  "description": "lab 3 for se3316",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/lmdncn/se3316a.git"
+  },
+  "author": "Liam Duncan",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/lmdncn/se3316a#readme",
+  "dependencies": {
+    "body": "^5.1.0",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mongoose": "^4.6.7",
+    "parser": "^0.1.4"
+  }
+}
