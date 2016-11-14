@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {CoursesComponent} from './courses/courses.component';
-import{ToolbarComponent} from './toolbar/toolbar.component';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +7,5 @@ import{ToolbarComponent} from './toolbar/toolbar.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Course Halo';
+  title = 'CourseMan';
 }
