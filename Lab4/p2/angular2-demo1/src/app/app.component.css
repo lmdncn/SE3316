@@ -1,1 +1,13 @@
-h1{text-align: center;}
+@import url('https://fonts.googleapis.com/css?family=Schoolbell');
+
+h1{    
+    text-align: center;
+    font-family: 'Schoolbell', cursive;
+    
+}
+
+div{
+    width:60%;
+    padding-top: 8rem;
+    
+}

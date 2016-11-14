@@ -1,14 +1,17 @@
-div#manage-bar{
-    /*width: 60%;*/
-    /*text-align: center;*/
-    margin-left: 20px;
-}
-
 form button{
     width: 15rem;
+    float: right;
+}
+
+td button {
+    float: right;
 }
 
 input{
     width:15rem;
+    
+}
+form{
+    margin:1rem 0;
 }
 

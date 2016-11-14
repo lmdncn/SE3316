@@ -5,20 +5,20 @@
 
     <div class="form-group" id="textentry">
         <label for="courseName" class='sr-only'>Enter Course Name</label>
-    <input [(ngModel)]="text" type="text" class="form-control" name="courseName" placeholder='Course Name...'/>
+    <input [(ngModel)]="text" type="text" class="form-control input-lg" name="courseName" placeholder='Course Name...'/>
     </div>
     
-    <button name="addCourse" class='btn btn-primary'>Add Course</button>
+    <button name="addCourse" class='btn btn-success btn-lg'>Add Course</button>
     
 </form>
 </div>
 
 
-<ul>
-    <li *ngFor="let course of courses">
-        {{course}}
-        <button (click)="deleteCourse(course)">X</button>
-    </li>
+<table class="table table-striped">
+    <tr *ngFor="let course of courses">
+        <td>{{course}}</td> 
+        <td><button (click)="deleteCourse(course)" class="btn btn-danger btn-xs" >Delete</button></td>
+    </tr>
     
-</ul>
+</table>
 
