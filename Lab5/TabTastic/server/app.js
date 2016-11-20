@@ -34,6 +34,12 @@ app.use(express.static(path.join(__dirname,'/../client/dist')));
 
 
 
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost:27017/TabTastic'); //connect to the db
+
+
+
 app.use('/',index);
 
 app.use('/api',tabs);

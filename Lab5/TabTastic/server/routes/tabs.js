@@ -1,10 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-var mongoose = require('mongoose');
-
-mongoose.connect('mongodb://localhost:27017/TabTastic'); //connect to the db
-
 var Tabs = require('../models/tab');
 
 router.get('/tabs', function (req, res, next) {
@@ -33,7 +29,7 @@ router.post('/tabs', function (req, res) {
 
     tab.song = "SongTest";
     tab.artist = "Artist Test";
-    tab.author = 12312312;
+    tab.authorId = 12312312;
     tab.tab = "Row Row [D]Row your boat";
 
 
