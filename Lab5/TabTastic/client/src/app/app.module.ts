@@ -13,10 +13,10 @@ import { TabViewComponent } from './tab-view/tab-view.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
-import {ConfigService} from './config.service';
+import { ConfigService } from './config.service';
 
 const appRoutes: Routes = [
-  {path: '', redirectTo: 'SignUp', pathMatch: 'full'},
+  { path: '', redirectTo: 'Home', pathMatch: 'full' },
   { path: 'Home', component: HomepageComponent },
   { path: 'TabView', component: TabViewComponent },
   { path: 'SignIn', component: SignInComponent },
