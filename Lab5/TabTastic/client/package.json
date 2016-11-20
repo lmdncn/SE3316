@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "tab-tastic",
   "version": "0.0.0",
   "license": "MIT",
   "angular-cli": {},
@@ -20,7 +20,10 @@
     "@angular/platform-browser": "^2.1.0",
     "@angular/platform-browser-dynamic": "^2.1.0",
     "@angular/router": "^3.1.0",
+    "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
+    "jquery": "^3.1.1",
+    "ng2-bootstrap": "^1.1.16",
     "rxjs": "5.0.0-beta.12",
     "ts-helpers": "^1.1.1",
     "zone.js": "^0.6.23"
@@ -31,6 +34,7 @@
     "@types/node": "^6.0.42",
     "angular-cli": "1.0.0-beta.20-4",
     "codelyzer": "~1.0.0-beta.3",
+    "gulp-shell": "^0.5.2",
     "jasmine-core": "2.4.1",
     "jasmine-spec-reporter": "2.5.0",
     "karma": "1.2.0",

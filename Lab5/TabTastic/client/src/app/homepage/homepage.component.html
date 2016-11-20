@@ -1,0 +1,92 @@
+
+<div class="row">
+  <div class="col-xs-6 col-md-3">
+    <a href="" class="thumbnail">
+      <img src="http://placehold.it/350x150" alt="Featured">
+    </a>
+  </div>
+
+  <div class="col-xs-6 col-md-3">
+    <a href="" class="thumbnail">
+      <img src="http://placehold.it/350x150" alt="Favorites">
+    </a>
+  </div>
+
+  <div class="col-xs-6 col-md-3">
+    <a href="" class="thumbnail">
+      <img src="http://placehold.it/350x150" alt="Recently Viewed">
+    </a>
+  </div>
+
+  <div class="col-xs-6 col-md-3">
+    <a href="" class="thumbnail">
+      <img src="http://placehold.it/350x150" alt="Recently Added">
+    </a>
+  </div>
+
+  <div class="col-xs-6 col-md-3">
+    <a href="" class="thumbnail">
+      <img src="http://placehold.it/350x150" alt="Random Tab">
+    </a>
+  </div>
+
+  <div class="col-xs-6 col-md-3">
+    <a href="" class="thumbnail">
+      <img src="http://placehold.it/350x150" alt="Top Tabs">
+    </a>
+  </div>
+
+</div>
+
+
+
+<h5>Featured Tabs:</h5>
+
+<table id="featured" class="table table-hover">
+
+  <thead>
+    <tr>
+      <td>Song Name</td>
+      <td>Song Artist</td>
+      <td>Tab Description</td>
+      <td>Author</td>
+    </tr>
+  </thead>
+
+
+   <tbody>
+    <tr *ngFor="let t of featured" (click)="goToTab(t)" >
+      <td>{{t.song}}</td>
+      <td>{{t.artist}}</td>
+      <td>{{t.desc}}</td>
+      <td>{{t.author}}</td>
+    </tr>
+  </tbody>
+
+</table>
+
+<!--To be implemented Favorites Table-->
+
+<!--<table id="favorites" class="table table-hover">-->
+
+  <!--<thead>-->
+  <!--<tr>-->
+    <!--<td>Song Name</td>-->
+    <!--<td>Song Artist</td>-->
+    <!--<td>Tab Description</td>-->
+    <!--<td>Author</td>-->
+  <!--</tr>-->
+  <!--</thead>-->
+
+
+  <!--<tbody>-->
+  <!--<tr *ngFor="let t of favorites" (click)="goToTab(t.id)" >-->
+    <!--<td>{{t.song}}</td>-->
+    <!--<td>{{t.artist}}</td>-->
+    <!--<td>{{t.desc}}</td>-->
+    <!--<td>{{t.author}}</td>-->
+  <!--</tr>-->
+  <!--</tbody>-->
+
+<!--</table>-->
+
