@@ -1,24 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import{Tab} from '../tab';
 
+import{TabsService} from "../tabs.service";
+
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.css'],
-  inputs: ['featured']
+  providers:[TabsService]
 })
 
 export class HomepageComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit() {
+  featured:Array<Tab>;
+
+  constructor(private tabsService: TabsService) { }
+
+
+  goToTab(t:Tab){
+    console.log("Going to tab : " + JSON.stringify(t));
+
+
   }
 
-  goToTab(tId:number){
-    console.log("Going to tab : " + tId);
+  getFeatured(){
 
-
+    this.featured = this.tabsService.getFeaturedTabs();
   }
 
+  ngOnInit():any{
+    this.getFeatured();
+  }
 }

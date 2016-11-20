@@ -1,3 +1,6 @@
+//This defines a Tab object
+
+
 export class Tab {
     id: number;
     song: string;
