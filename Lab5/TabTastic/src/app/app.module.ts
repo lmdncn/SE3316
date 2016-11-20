@@ -10,7 +10,14 @@ import { AlertModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { HomepageComponent } from './homepage/homepage.component';
 import { TabViewComponent } from './tab-view/tab-view.component';
 
+import { RouterModule, Routes } from '@angular/router';
 
+
+const appRoutes: Routes = [
+  {path: '', redirectTo: 'Home', pathMatch: 'full'},
+  { path: 'Home', component: HomepageComponent },
+  { path: 'TabView', component: TabViewComponent }
+];
 
 
 @NgModule({
@@ -24,9 +31,11 @@ import { TabViewComponent } from './tab-view/tab-view.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AlertModule
+    AlertModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
