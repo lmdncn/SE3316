@@ -12,9 +12,13 @@ export class AppComponent{
   title = 'TabTastic!';
   heading = ConfigService.MainHeading;
 
+  signedIn:boolean = false;
+
+
 
 
   constructor(){
+
 
   }
 

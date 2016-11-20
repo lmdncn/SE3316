@@ -11,12 +11,16 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { TabViewComponent } from './tab-view/tab-view.component';
 
 import { RouterModule, Routes } from '@angular/router';
-
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import {ConfigService} from './config.service';
 
 const appRoutes: Routes = [
-  {path: '', redirectTo: 'Home', pathMatch: 'full'},
+  {path: '', redirectTo: 'SignUp', pathMatch: 'full'},
   { path: 'Home', component: HomepageComponent },
-  { path: 'TabView', component: TabViewComponent }
+  { path: 'TabView', component: TabViewComponent },
+  { path: 'SignIn', component: SignInComponent },
+  { path: 'SignUp', component: SignUpComponent }
 ];
 
 
@@ -26,6 +30,8 @@ const appRoutes: Routes = [
     NavbarComponent,
     HomepageComponent,
     TabViewComponent,
+    SignUpComponent,
+    SignInComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +40,7 @@ const appRoutes: Routes = [
     AlertModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [ConfigService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
