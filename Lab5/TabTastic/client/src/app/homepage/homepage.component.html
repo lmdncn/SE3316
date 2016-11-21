@@ -44,9 +44,9 @@
 
 
 
-<h5>Featured Tabs:</h5>
+<h5>All Tabs:</h5>
 
-<table id="featured" class="table table-hover">
+<table id="allTabs" class="table table-hover">
 
   <thead>
     <tr>
@@ -59,7 +59,7 @@
 
 
    <tbody>
-    <tr *ngFor="let t of featured" (click)="goToTab(t)" >
+    <tr *ngFor="let t of allTabs" (click)="goToTab(t)" >
       <td>{{t.song}}</td>
       <td>{{t.artist}}</td>
       <td>{{t.desc}}</td>

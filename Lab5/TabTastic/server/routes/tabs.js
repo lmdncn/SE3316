@@ -15,7 +15,7 @@ router.get('/tabs', function (req, res, next) {
 
         res.json(tabs);
 
-    }).limit(10);
+    });
 
 });
 
@@ -27,10 +27,10 @@ router.post('/tabs', function (req, res) {
 
     var tab = new Tabs();
 
-    tab.song = "SongTest";
-    tab.artist = "Artist Test";
-    tab.authorId = 12312312;
-    tab.tab = "Row Row [D]Row your boat";
+    tab.song = req.song;
+    tab.artist = req.artist;
+    tab.authorId = req.authorId;
+    tab.tab = req.tab;
 
 
     tab.save(function (err) {

@@ -19,7 +19,7 @@ export class SignUpComponent implements OnInit {
   }
 
   createAccount(){
-    this.accountService.createAccount(this.username,this.email,this.password);
+    
     this.username="";
     this.password="";
     this.email="";

@@ -1,18 +1,18 @@
 <h2>Welcome to TabTastic!</h2>
 <h4>Please Create An Account...</h4>
 
-<div>
+<div class="container"> 
   <div class="form-group">
     <label for="InputUsername">Username</label>
-    <input [(ngModel)]="username" type="text" class="form-control" id="InputUsername" placeholder="Username">
+    <input  type="text" class="form-control" id="InputUsername" placeholder="Username">
   </div>
   <div class="form-group">
     <label for="InputEmail1">Email address</label>
-    <input [(ngModel)]="email" type="email" class="form-control" id="InputEmail1" placeholder="Email">
+    <input type="email" class="form-control" id="InputEmail1" placeholder="Email">
   </div>
   <div class="form-group">
     <label for="InputPassword1">Password</label>
-    <input [(ngModel)]="password" type="password" class="form-control" id="InputPassword1" placeholder="Password">
+    <input type="password" class="form-control" id="InputPassword1" placeholder="Password">
   </div>
 
   <button (click)="createAccount()" name="Create Account" class="btn btn-default">Create Account</button>

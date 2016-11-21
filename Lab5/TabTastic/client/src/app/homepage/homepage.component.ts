@@ -13,23 +13,25 @@ import{TabsService} from "../tabs.service";
 export class HomepageComponent implements OnInit {
 
 
-  featured:Array<Tab>;
+  allTabs:Tab[];
 
-  constructor(private tabsService: TabsService) { }
+  constructor(private tabsService: TabsService) { 
+
+    this.tabsService.getTabs().subscribe(tabs => {
+
+    this.allTabs = tabs;
+
+    });
+
+  }
 
 
   goToTab(t:Tab){
-    console.log("Going to tab : " + JSON.stringify(t));
-
-
+    this.tabsService.setOpentab(t);
   }
 
-  getFeatured(){
-
-    this.featured = this.tabsService.getFeaturedTabs();
-  }
+  
 
   ngOnInit():any{
-    this.getFeatured();
   }
 }

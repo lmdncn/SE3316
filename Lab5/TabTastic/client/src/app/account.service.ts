@@ -1,24 +1,18 @@
 import { Injectable } from '@angular/core';
 import {ConfigService} from './config.service';
 import{User} from './user';
+import{Http, Headers} from '@angular/http';
+import 'rxjs/add/operator/map';
+
 
 @Injectable()
 export class AccountService {
 
-  constructor(private configService : ConfigService) { }
+  constructor(private http:Http) { 
 
-  createAccount(un:string, em:string, p:string){
-
-    //Create a new user
+ console.log("task service init");
 
 }
-
-  logInAccount(un:string, p:string){
-
-
-  
-  }
-
 
 
 }

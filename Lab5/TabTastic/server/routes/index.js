@@ -12,4 +12,29 @@ router.get('/',function(req,res,next){
 
 });
 
+router.get('/Home',function(req,res,next){
+
+    res.render('index.html');
+
+});
+
+router.get('/TabView',function(req,res,next){
+
+    res.render('index.html');
+
+});
+
+router.get('/SignUp',function(req,res,next){
+
+    res.render('index.html');
+
+});
+
+router.get('/SignIn',function(req,res,next){
+
+    res.render('index.html');
+
+});
+
+
 module.exports = router;
