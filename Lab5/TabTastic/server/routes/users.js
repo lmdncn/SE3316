@@ -1,6 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
+//Password Hashing
+var passwordHash = require('password-hash');
+
+var hashedPassword = passwordHash.generate('password123');
 
 var Users = require('../models/user');
 
