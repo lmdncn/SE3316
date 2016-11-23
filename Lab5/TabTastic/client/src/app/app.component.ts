@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
-import {ConfigService} from './config.service';
 
+
+import{TabsService} from "./tabs.service";
 import {Tab} from './tab';
+
+
+
 
 @Component({
   selector: 'app-root',
@@ -10,16 +14,12 @@ import {Tab} from './tab';
 })
 export class AppComponent{
   title = 'TabTastic!';
-  heading = ConfigService.MainHeading;
 
   signedIn:boolean = false;
 
 
 
-
   constructor(){
-
-
   }
 
 

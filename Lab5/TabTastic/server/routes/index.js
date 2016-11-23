@@ -36,5 +36,11 @@ router.get('/SignIn',function(req,res,next){
 
 });
 
+router.get('/AddTab',function(req,res,next){
+
+    res.render('index.html');
+
+});
+
 
 module.exports = router;

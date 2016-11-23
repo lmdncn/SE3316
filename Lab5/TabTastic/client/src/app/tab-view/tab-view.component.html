@@ -2,6 +2,15 @@
   tab-view works!
 </p>
 
+<h2 *ngIf="viewTab==null" >
+  No Tab Selected
+</h2>
+
+
+<div *ngIf="viewTab != null" >
+
+<h2>Displaying Selected Tab:</h2>
+
 <h3>
     {{viewTab.song}}
 </h3>
@@ -14,3 +23,5 @@
 <p>
   {{viewTab.tab}}
 </p>
+
+</div>

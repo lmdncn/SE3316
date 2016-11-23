@@ -13,14 +13,16 @@ import { TabViewComponent } from './tab-view/tab-view.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
-import { ConfigService } from './config.service';
+import{TabsService} from "./tabs.service";
+import { AddTabComponent } from './add-tab/add-tab.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'Home', pathMatch: 'full' },
   { path: 'Home', component: HomepageComponent },
   { path: 'TabView', component: TabViewComponent },
   { path: 'SignIn', component: SignInComponent },
-  { path: 'SignUp', component: SignUpComponent }
+  { path: 'SignUp', component: SignUpComponent },
+  { path:'AddTab', component: AddTabComponent}
 ];
 
 
@@ -32,6 +34,7 @@ const appRoutes: Routes = [
     TabViewComponent,
     SignUpComponent,
     SignInComponent,
+    AddTabComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,7 @@ const appRoutes: Routes = [
     AlertModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [ConfigService],
+  providers: [TabsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

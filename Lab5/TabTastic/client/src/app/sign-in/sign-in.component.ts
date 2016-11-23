@@ -18,16 +18,16 @@ export class SignInComponent implements OnInit {
   }
 
  SignIn(){
-    if(this.accountService.logInAccount(this.username,this.password))
-    {
-      console.log("Logged On")
+    // if(this.accountService.logInAccount(this.username,this.password))
+    // {
+    //   console.log("Logged On")
 
-    }else{
-      //Invalid Log On
+    // }else{
+    //   //Invalid Log On
 
-      console.log("Invalid Log On")
+    //   console.log("Invalid Log On")
 
-    }
+    // }
 
  }
 

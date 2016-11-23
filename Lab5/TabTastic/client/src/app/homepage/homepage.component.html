@@ -44,7 +44,7 @@
 
 
 
-<h5>All Tabs:</h5>
+<h5 *ngIf="allTabs = null" >All Tabs:</h5>
 
 <table id="allTabs" class="table table-hover">
 
@@ -58,14 +58,14 @@
   </thead>
 
 
-   <tbody>
+   <!--<tbody >
     <tr *ngFor="let t of allTabs" (click)="goToTab(t)" >
       <td>{{t.song}}</td>
       <td>{{t.artist}}</td>
       <td>{{t.desc}}</td>
       <td>{{t.author}}</td>
     </tr>
-  </tbody>
+  </tbody>-->
 
 </table>
 

@@ -5,6 +5,8 @@ var TabSchema = new Schema({
 
     song: String,
     artist: String,
+    desc: String,
+    author: String,
     authorId: Number,
     tab: String,
     dateMade: {

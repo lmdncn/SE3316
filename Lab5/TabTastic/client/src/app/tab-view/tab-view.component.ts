@@ -7,22 +7,19 @@ import{TabsService} from "../tabs.service";
 @Component({
   selector: 'app-tab-view',
   templateUrl: './tab-view.component.html',
-  styleUrls: ['./tab-view.component.css'],
-  providers:[TabsService]
+  styleUrls: ['./tab-view.component.css']
 })
 export class TabViewComponent implements OnInit {
 
   viewTab:Tab;
 
-  constructor(private tabsService: TabsService) {
 
 
+  constructor(private tabsSerivice:TabsService) {
    }
 
   ngOnInit() {
-
-    this.viewTab = this.tabsService.openTab;
-
+    console.log(JSON.stringify(this.viewTab));
   }
 
 }
