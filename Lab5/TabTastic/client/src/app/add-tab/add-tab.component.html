@@ -1,3 +1,143 @@
+<div class="container">
+
+
+
+<div *ngIf="tabAdded == true">
+
+  <h5>Your Tab has successfully been added!</h5>
+  
+  <h4>
+  Add another tab:
+</h4>
+
+
+</div>
+
+<div *ngIf="tabAdded != true">
+
+  <h5>Here you can add a tab!</h5>
+  
+  <h4>
+  Add a tab:
+</h4>
+
+
+</div>
+
+
+
+
+<form [formGroup]="addTabForm" (ngSubmit)="addTabSubmit($event)" *ngIf="toaddTab == null" class="form-horizontal">
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="song">Song Name:</label>
+    <div class="col-sm-10">
+      <input formControlName="song" type="text" class="form-control" id="song" placeholder="Song...">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label  class="control-label col-sm-2" for="artist">Artist Name:</label>
+    <div class="col-sm-10"> 
+      <input formControlName="artist" type="text" class="form-control" id="artist" placeholder="Artist...">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="desc">Tab Description:</label>
+    <div class="col-sm-10"> 
+      <input formControlName="desc" type="text" class="form-control" id="desc" placeholder="Description...">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="author">Author:</label>
+    <div class="col-sm-10"> 
+      <input formControlName="author" type="text" class="form-control" id="author" placeholder="Author...">
+    </div>
+  </div>
+
+    <div class="form-group">
+    <label class="control-label col-sm-2" for="authorId">Author ID:</label>
+    <div class="col-sm-10"> 
+      <input formControlName="authorId" type="number" class="form-control" id="authorId" placeholder="Author Id...">
+    </div>
+  </div>
+
+  <div class="form-group">
+  <label for="tab">Enter Tab:</label>
+  <textarea formControlName="tab" class="form-control" rows="20" id="tab"></textarea>
+</div>
+  
+
+  <div class="form-group"> 
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">Submit</button>
+    </div>
+  </div>
+</form>
+
+<div *ngIf="toaddTab != null" >
+  
+<h2>Please Confirm The Tab</h2>
+
+
 <p>
-  add-tab works!
+
+{{toaddTab.song}}
+
 </p>
+
+<p>
+
+{{toaddTab.artist}}
+
+</p>
+
+<p>
+
+{{toaddTab.desc}}
+
+</p>
+
+<p>
+
+{{toaddTab.author}}
+
+</p>
+
+<p>
+
+{{toaddTab.authorId}}
+
+</p>
+
+<p>
+
+{{toaddTab.tab}}
+
+</p>
+
+<button name="change" class="btn btn-danger" (click) = "changeAddTab()">Change Something</button>
+<br>
+<button name="confirm" class="btn btn-success" (click) = "confirmAddTab()">Confirm</button>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

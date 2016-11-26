@@ -3,6 +3,8 @@ var router = express.Router();
 
 var Tabs = require('../models/tab');
 
+
+
 router.get('/tabs', function (req, res, next) {
 
     console.log('getting tabs');
@@ -21,9 +23,10 @@ router.get('/tabs', function (req, res, next) {
 
 
 
-router.post('/tabs', function (req, res) {
+router.post('/tabs', function (req, res, next) {
 
-    console.log('made tab');
+    
+   console.log('posting tab');
 
     var tab = new Tabs();
 
@@ -34,7 +37,7 @@ router.post('/tabs', function (req, res) {
     tab.authorId = req.authorId;
     tab.tab = req.tab;
 
-
+    console.log('made tab' + JSON.stringify(tab));
 
     tab.save(function (err) {
         if (err) {

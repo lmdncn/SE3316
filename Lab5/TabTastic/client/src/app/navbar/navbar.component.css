@@ -1,3 +1,18 @@
-#test{
-    height: 700px;
+#test {
+  height: 700px;
+}
+
+.navbar {
+  margin: 0;
+  padding: 0;
+  height: 14em;
+  background-color: #006A92;
+  background: url("../assets/img/bbanner.jpg") no-repeat;
+  background-size: 100% 14em;
+  background-origin: content-box;
+}
+
+#mainnav {
+ margin-top:9.4em;
+ text-align: right;
 }

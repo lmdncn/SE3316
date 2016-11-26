@@ -1,16 +1,103 @@
 @import url('https://fonts.googleapis.com/css?family=Delius+Unicase');
-
-h1{
-text-align: center;
-font-family: 'Delius Unicase', cursive;
-font-size: 3.5em;
+h1 {
+  text-align: center;
+  font-family: 'Delius Unicase', cursive;
+  font-size: 3.5em;
+  color: black;
+  /*text-shadow: -1px 0 #000000,0 1px #000000,1px 0 #000000,0 -1px #000000;*/
 }
 
-@media(max-width:576px){
-/*To Scale Text*/
+h2 {
+  text-align: center;
+  font-family: 'Delius Unicase', cursive;
+  font-size: 2.5em;
+}
 
-html{
+h3 {
+  text-align: center;
+  font-family: 'Delius Unicase', cursive;
+  font-size: 2.2em;
+}
 
+h4 {
+  text-align: center;
+  font-family: 'Delius Unicase', cursive;
+  font-size: 1.8em;
+}
+
+h5 {
+  text-align: center;
+  font-family: 'Delius Unicase', cursive;
+  font-size: 1.5em;
+}
+
+h6 {
+  text-align: center;
+  font-family: 'Delius Unicase', cursive;
+  font-size: .8em;
+}
+
+@media(max-width:576px) {
+  /*To Scale Text*/
+  html {
     font-size: 10px;
+  }
 }
+
+#landing {
+  margin-bottom: 50px;
+}
+
+.btn {
+  background: transparent;
+  font-family: 'Delius Unicase', cursive;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0px;
+  font-family: Georgia;
+  color: black;
+  font-size: 1e, ;
+  padding: 5px 10px 5px 10px;
+  border: solid #000000 1px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  position: relative;
+  top: -1px;
+  -webkit-box-shadow: 0px -1px 4px #666666;
+  -moz-box-shadow: 0px -1px 4px #666666;
+  box-shadow: 0px -1px 4px #666666;
+}
+
+.btn:active {
+  top: 0px;
+  -webkit-box-shadow: 0px -1px 2px #666666;
+  -moz-box-shadow: 0px -1px 2px #666666;
+  box-shadow: 0px -1px 2px #666666;
+}
+
+.link:hover {
+  cursor: pointer;
+  position: relative;
+  top: -1px;
+  text-shadow: 0px -1px 1px #666666;
+  text-decoration: none;
+}
+
+.link:active {
+  position: relative;
+  top: 0px;
+  text-shadow: 0px 1px 2px #666666;
+  text-decoration: none;
+}
+
+
+div{
+  margin: 0;
+  padding: 0;
+}
+
+div.container-fluid{
+  width: 100%;
 }

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import {ConfigService} from './config.service';
 import{User} from './user';
 import{Http, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';

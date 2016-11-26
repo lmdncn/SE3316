@@ -1,25 +1,32 @@
 <div class="container-fluid">
-
+<header>
   <h1>
 
     {{title}}
 
   </h1>
-
+</header>
   <app-navbar></app-navbar>
 
 <!--IF not logged on-->
 
-<div id="landing" class="container">
+<div *ngIf="entry"  id="landing" class="container">
 <h5>Welcome to TabTastic!</h5>
-<p>
+<p class="text-center">
   This is a Guitar Tab Sharing Site!
 </p>
 
 <!--Router Link to PARENT-->
-<a routerLink="SignUp">Sign Up</a> 
+<h6>
+  <p class="link" routerLink="SignUp">Sign Up</p> 
+</h6>
 
-<a routerLink="SignIn">I have an account</a>
+<h6>
+  <p class="link" routerLink="SignIn">I have an account</p>
+</h6>
+
+
+<button class="btn btn-block" (click) = 'closeLanding()'>Got It!</button>
 
 </div>
 

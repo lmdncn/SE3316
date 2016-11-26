@@ -13,8 +13,11 @@ import { TabViewComponent } from './tab-view/tab-view.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
-import{TabsService} from "./tabs.service";
+import{ TabsService } from "./tabs.service";
 import { AddTabComponent } from './add-tab/add-tab.component';
+
+
+import { ReactiveFormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'Home', pathMatch: 'full' },
@@ -41,10 +44,11 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     AlertModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [TabsService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
 

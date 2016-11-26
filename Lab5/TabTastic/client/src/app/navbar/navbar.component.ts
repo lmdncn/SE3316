@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router'
+
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +11,7 @@ export class NavbarComponent implements OnInit {
 
   search:string;
 
-  constructor() {
+  constructor(private router:Router) {
     this.search="";
   }
 
@@ -21,5 +23,7 @@ export class NavbarComponent implements OnInit {
     console.log("Searching for "+this.search);
     this.search="";
   }
+
+
 
 }

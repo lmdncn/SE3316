@@ -10,11 +10,11 @@ import {Tab} from './tab';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ["./app.component.css"],
 })
 export class AppComponent{
-  title = 'TabTastic!';
-
+  title:String = 'TabTastic!';
+  entry: Boolean = true;
   signedIn:boolean = false;
 
 
@@ -22,6 +22,9 @@ export class AppComponent{
   constructor(){
   }
 
-
+  closeLanding()
+{
+  this.entry = false;
+}
 
 }
