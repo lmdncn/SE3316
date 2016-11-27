@@ -9,26 +9,41 @@ declare var Auth0Lock: any;
 
 @Injectable()
 export class AuthService {
+    userId:any;
+    nickname:any;
 
     lockLI = new Auth0Lock('yOHOPEsMPE4f5l5JbRFuMDOO188oxW9X', 'lmdncn.auth0.com', {
        
+        languageDictionary: {
+    title: "TabTastic"
+  },
+
     theme: {
     logo: '../assets/img/tab.png',
-    primaryColor: '#006A92',
-    labeledSubmitButton: false
+    primaryColor: '#BF0B0D',
+    
   },
   socialButtonStyle: 'small',
+  allowSignUp: false
+
 
     });
 
     lockSU = new Auth0Lock('yOHOPEsMPE4f5l5JbRFuMDOO188oxW9X', 'lmdncn.auth0.com', {
        
+languageDictionary: {
+    title: "TabTastic"
+  },
+
+
     theme: {
     logo: '../assets/img/tab.png',
-    primaryColor: '#006A92',
-    labeledSubmitButton: false
+    primaryColor: '#BF0B0D',
+    
   },
   socialButtonStyle: 'small',
+  allowLogin: false
+
     });
 
     constructor(private router: Router) {
@@ -40,7 +55,8 @@ export class AuthService {
                 if (error) {
                     console.log(error);
                 }
-
+                this.userId = profile.user_id;
+                this.nickname = profile.nickname;
                 localStorage.setItem('profile', JSON.stringify(profile));
             });
 
@@ -54,12 +70,21 @@ export class AuthService {
                 if (error) {
                     console.log(error);
                 }
-
+                this.userId = profile.user_id;
+                this.nickname = profile.nickname;
+                console.log (JSON.stringify(profile.user_id));
                 localStorage.setItem('profile', JSON.stringify(profile));
             });
 
             this.lockLI.hide();
         });
+
+
+        if(this.userId == null && this.loggedIn()){
+            let temp = JSON.parse(localStorage.getItem('profile'));
+            this.userId = temp.user_id;
+            this.nickname = temp.nickname;
+        }
     }
 
     login() {
@@ -84,6 +109,8 @@ export class AuthService {
         // from local storage
         localStorage.removeItem('profile');
         localStorage.removeItem('id_token');
+        this.userId = null;
+        this.nickname = null;
 
         // Send the user back to the public deals page after logout
         this.router.navigateByUrl('/Home');
@@ -92,6 +119,7 @@ export class AuthService {
     loggedIn() {
         return tokenNotExpired();
     }
+
 
 }
 

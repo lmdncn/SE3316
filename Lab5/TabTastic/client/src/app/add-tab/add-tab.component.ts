@@ -3,7 +3,7 @@ import { Tab } from '../tab';
 import { TabsService } from "../tabs.service";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
-
+import{AuthService} from '../auth.service';
 
 
 @Component({
@@ -20,13 +20,11 @@ export class AddTabComponent implements OnInit {
   complete: string = 'welcome';
 
 
-  constructor(private tabsService: TabsService, fb: FormBuilder) {
+  constructor(private tabsService: TabsService, fb: FormBuilder,private authService: AuthService) {
     this.tabForm = fb.group({
       song: ['', Validators.required],
       artist: ['', Validators.required],
       desc: ['', Validators.nullValidator],
-      author: ['', Validators.required],
-      authorId: ['', Validators.nullValidator],
       tab: ['', Validators.required],
     });
   }
@@ -41,8 +39,8 @@ export class AddTabComponent implements OnInit {
       this.tabForm.value.song,
       this.tabForm.value.artist,
       this.tabForm.value.desc,
-      this.tabForm.value.author,
-      this.tabForm.value.authorId,
+      this.authService.nickname,
+      this.authService.userId,
       this.tabForm.value.tab
     );
 

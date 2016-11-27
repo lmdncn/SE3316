@@ -7,7 +7,7 @@ var TabSchema = new Schema({
     artist: String,
     desc: String,
     author: String,
-    authorId: Number,
+    authorId: String,
     tab: String,
     dateMade: {
         type: Date,

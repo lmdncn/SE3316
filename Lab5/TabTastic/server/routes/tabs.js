@@ -7,14 +7,14 @@ const jwt = require('express-jwt');
 
 // Token Valid
 const authCheck = jwt({
-  secret: new Buffer('gPce_rvrT44vS-A81DesGEa5PUYOQdmssls9NiFyeYFu3VdZZDgxLal-MCRB-IKi', 'base64'),
-  audience: 'yOHOPEsMPE4f5l5JbRFuMDOO188oxW9X'
+    secret: new Buffer('gPce_rvrT44vS-A81DesGEa5PUYOQdmssls9NiFyeYFu3VdZZDgxLal-MCRB-IKi', 'base64'),
+    audience: 'yOHOPEsMPE4f5l5JbRFuMDOO188oxW9X'
 });
 
 
 
 
-router.post('/tabs',authCheck, function (req, res, next) {
+router.post('/tabs', authCheck, function (req, res, next) {
 
 
     console.log('posting tab');
@@ -47,7 +47,9 @@ router.get('/tabs', function (req, res, next) {
 
     console.log('getting tabs');
 
-    Tabs.find({}, function (err, tabs) {
+    Tabs.find({
+        'isPublic': true
+    }, function (err, tabs) {
 
         if (err) {
             res.send(err);
@@ -61,11 +63,15 @@ router.get('/tabs', function (req, res, next) {
 
 });
 
-router.get('/tabs/private',authCheck, function (req, res, next) {
+router.get('/tabs/myPrivate', authCheck, function (req, res, next) {
 
     console.log('getting tabs');
+    console.log(req.query.UserId);
 
-    Tabs.find({}, function (err, tabs) {
+    Tabs.find({
+        'authorId': req.query.UserId,
+        'isPublic': false
+    }, function (err, tabs) {
 
         if (err) {
             res.send(err);
@@ -79,7 +85,27 @@ router.get('/tabs/private',authCheck, function (req, res, next) {
 
 });
 
+router.get('/tabs/myPublic', authCheck, function (req, res, next) {
 
+    console.log('getting tabs');
+    console.log(req.query.UserId);
+
+    Tabs.find({
+        'authorId': req.query.UserId,
+        'isPublic': true
+    }, function (err, tabs) {
+
+        if (err) {
+            res.send(err);
+        }
+
+        console.log(JSON.stringify(tabs));
+
+        res.json(tabs);
+
+    });
+
+});
 
 
 

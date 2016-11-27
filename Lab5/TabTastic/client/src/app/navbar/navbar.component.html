@@ -23,6 +23,13 @@
             <!-- We'll show the login link if the user is not currently logged in -->
             <a (click)=authService.login() *ngIf="!authService.loggedIn()">Log In</a>
           </li>
+
+          <li>
+            <!-- We'll show the login link if the user is not currently logged in -->
+            <a (click)=authService.signUp() *ngIf="!authService.loggedIn()">Sign Up</a>
+          </li>
+
+
           <li>
             <!-- On the other hand, if the user is logged in, we'll show a log out link -->
             <a (click)=authService.logout() *ngIf="authService.loggedIn()">Log Out</a>

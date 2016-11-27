@@ -5,15 +5,15 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { AuthHttp } from 'angular2-jwt';
-
+import{AuthService} from './auth.service';
 
 @Injectable()
 export class TabsService {
 
   openTab: Tab;
   tabApi = 'api/tabs';
-  privatetabApi = 'api/tabs/private';
-  constructor(private http: Http,private authHttp: AuthHttp) {
+
+  constructor(private http: Http,private authHttp: AuthHttp,private authService: AuthService) {
   }
 
 
@@ -34,18 +34,28 @@ export class TabsService {
 
 
 
- getPrivateTabs(): Observable<Tab[]> {
+ getPrivateTab(): Observable<Tab[]> {
 
-    return this.authHttp.get(this.privatetabApi)
+    return this.authHttp.get('api/tabs/private')
       .map((res) => res.json())
       .catch(this.handleError);
   }
 
- getPrivateTab(id) {
-    return this.authHttp.get(this.privatetabApi + '/' + id)
+ getMyPrivateTabs() {
+  
+console.log("Getting tabs by " + this.authService.userId);
+    return this.authHttp.get('api/tabs/myPrivate' + '/?UserId=' + this.authService.userId )
       .map((res: Response) => res.json());
-  }
+    
+ }
 
+ getMyPublicTabs() {
+  
+console.log("Getting tabs by " + this.authService.userId);
+    return this.authHttp.get('api/tabs/myPublic' + '/?UserId=' + this.authService.userId )
+      .map((res: Response) => res.json());
+    
+ }
 
 
 

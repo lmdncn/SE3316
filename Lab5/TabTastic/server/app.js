@@ -10,7 +10,6 @@ var cookieParser = require('cookie-parser'); // for handling cookies
 var bodyParser = require('body-parser'); // for parsing request URL
 
 var index = require('./routes/index');
-var users = require('./routes/users');
 var tabs = require('./routes/tabs');
 
 
@@ -72,7 +71,6 @@ app.use('/', index);
 
 app.use('/api', tabs);
 
-app.use('/acc', users);
 
 
 
