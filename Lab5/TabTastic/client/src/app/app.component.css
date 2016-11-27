@@ -1,4 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Delius+Unicase');
+
+@media(min-width:768px) {
+header{
+position: absolute;
+z-index: 10;
+right: 4em;
+}
+}
+
+
 h1 {
   text-align: center;
   font-family: 'Delius Unicase', cursive;

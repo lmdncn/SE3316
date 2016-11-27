@@ -6,19 +6,20 @@
   </header>
   <app-navbar></app-navbar>
   <!--IF not logged on-->
-  <div *ngIf="entry" id="landing" class="container">
+  <div *ngIf="entry && !authService.loggedIn()" id="landing" class="container">
     <h5>Welcome to TabTastic!</h5>
+
     <p class="text-center">
       This is a Guitar Tab Sharing Site!
     </p>
     <!--Router Link to PARENT-->
     <h6>
-      <p class="link" routerLink="SignUp">Sign Up</p>
+      <p class="link" (click)=authService.login() >Sign Up</p>
     </h6>
     <h6>
-      <p class="link" routerLink="SignIn">I have an account</p>
+      <p class="link" (click)=authService.login() >I have an account</p>
     </h6>
-    <button class="btn btn-block" (click)='closeLanding()'>Got It!</button>
+    <button class="btn btn-block" (click)='closeLanding()'>Continue Browsing Public Tabs</button>
   </div>
   <router-outlet></router-outlet>
 </div>

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
+import{AuthService} from './auth.service';
 
 import{TabsService} from "./tabs.service";
 import {Tab} from './tab';
-
+// import{AuthService} from './auth.service';
 
 
 
@@ -19,7 +20,7 @@ export class AppComponent{
 
 
 
-  constructor(){
+  constructor(private authService: AuthService){
   }
 
   closeLanding()

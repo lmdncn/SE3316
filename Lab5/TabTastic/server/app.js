@@ -1,3 +1,5 @@
+'use strict';
+
 // HTTP server using Express to handle incoming requests
 var express = require('express');
 var app = express();
@@ -10,6 +12,8 @@ var bodyParser = require('body-parser'); // for parsing request URL
 var index = require('./routes/index');
 var users = require('./routes/users');
 var tabs = require('./routes/tabs');
+
+
 
 
 
@@ -46,6 +50,23 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/TabTastic'); //connect to the db
 
 
+// AUTHENTICATION ======================================================================
+const jwt = require('express-jwt');
+const cors = require('cors');
+
+app.use(cors());
+
+// Token Valid
+const authCheck = jwt({
+  secret: new Buffer('YOUR-AUTH0-SECRET', 'base64'),
+  audience: 'YOUR-AUTH0-CLIENT-ID'
+});
+
+
+
+
+//---------------------------------------------------------------------------------------
+
 
 app.use('/', index);
 
@@ -68,6 +89,18 @@ app.use(function (req, res, next) {
 app.listen(port, function () {
     console.log('Server listening on port ' + port + " !");
 });
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

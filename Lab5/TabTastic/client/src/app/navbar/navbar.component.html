@@ -15,9 +15,20 @@
       <ul class="nav navbar-nav">
         <li [routerLinkActive]="['active']"><a routerLink='Home'>Home <span class="sr-only">(current)</span></a></li>
         <li [routerLinkActive]="['active']"><a routerLink='TabView'>Tab Viewer</a></li>
-        <li [routerLinkActive]="['active']"><a routerLink='AddTab'>Add Tab</a></li>
-        <li [routerLinkActive]="['active']"><a routerLink='SignIn'>Sign In</a></li>
-        <li [routerLinkActive]="['active']"><a routerLink='SignUp'>Sign Up</a></li>
+        <li *ngIf="authService.loggedIn()" [routerLinkActive]="['active']"><a routerLink='AddTab'>Add Tab</a></li>
+        <!--<li [routerLinkActive]="['active']"><a routerLink='SignIn'>Sign In</a></li>
+        <li [routerLinkActive]="['active']"><a routerLink='SignUp'>Sign Up</a></li>-->
+
+        <li>
+            <!-- We'll show the login link if the user is not currently logged in -->
+            <a (click)=authService.login() *ngIf="!authService.loggedIn()">Log In</a>
+          </li>
+          <li>
+            <!-- On the other hand, if the user is logged in, we'll show a log out link -->
+            <a (click)=authService.logout() *ngIf="authService.loggedIn()">Log Out</a>
+          </li>
+
+
       </ul>
       <div id="search" class="navbar-form navbar-right">
         <div class="form-group">
