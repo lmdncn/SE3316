@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Tab } from '../tab';
-import { Observable } from "rxjs/Observable"
+import { Observable } from "rxjs/Observable";
 import { TabsService } from "../tabs.service";
 
 
@@ -24,12 +24,6 @@ export class HomepageComponent implements OnInit {
 
   goToTab(t: Tab) {
     this.tabsService.setOpentab(t);
-  }
-
-  whatAreTabs(){
-console.log("Current tabs are : " + JSON.stringify(this.allTabs));
-
-
   }
 
   ngOnInit(): any {

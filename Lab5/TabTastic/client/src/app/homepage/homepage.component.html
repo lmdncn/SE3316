@@ -1,6 +1,5 @@
 
-
-
+<div class="container">
 
 
 <!--<div class="row">
@@ -42,7 +41,6 @@
 
 </div>-->
 
-<button (click)="whatAreTabs()">Check All tabs</button>
 
 <h5 >All Tabs:</h5>
 
@@ -59,7 +57,7 @@
 
 
    <tbody >
-    <tr *ngFor="let t of allTabs" (click)="goToTab(t)" >
+    <tr *ngFor="let t of allTabs" (click)='goToTab(t)' routerLink='../TabView' >
       <td>{{t.song}}</td>
       <td>{{t.artist}}</td>
       <td>{{t.desc}}</td>
@@ -94,3 +92,4 @@
 
 <!--</table>-->
 
+</div>

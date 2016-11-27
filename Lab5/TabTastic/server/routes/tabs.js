@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Tabs = require('../models/tab');
-
+var sanitizer = require('sanitizer');
 
 router.post('/tabs', function (req, res, next) {
 
@@ -10,12 +10,12 @@ router.post('/tabs', function (req, res, next) {
 
     let tab = new Tabs({
 
-        song: req.body.song,
-        artist: req.body.artist,
-        desc: req.body.desc,
-        author: req.body.author,
-        authorId: req.body.authorId,
-        tab: req.body.tab
+        song: sanitizer.santize(req.body.song),
+        artist: sanitizer.sanitize(req.body.artist),
+        desc: sanitizer.sanitize(req.body.desc),
+        author: sanitizer.sanitize(req.body.author),
+        authorId: sanitizer.sanitize(req.body.authorId),
+        tab: sanitizer.sanitize(req.body.tab)
     });
 
 

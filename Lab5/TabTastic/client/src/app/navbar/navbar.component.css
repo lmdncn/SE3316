@@ -1,18 +1,57 @@
-#test {
-  height: 700px;
+/* Custom --------------------------------------------------------------------------------------------------------------*/
+
+@media(min-width:768px) {
+  .navbar-default .navbar-nav>.active>a,
+  .navbar-default .navbar-nav>.active>a:hover,
+  .navbar-default .navbar-nav>.active>a:focus {
+    color: black;
+  }
+
+
+
+
+
+  /* link */
+  .navbar-default .navbar-nav>li>a {
+    color: white;
+  }
+
+ /* link */
+  .navbar-default .navbar-nav>li>a:hover {
+    color: black;
+    background-color: white;
+  }
+
+
+
+
+  .navbar {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: 14em;
+    background-color: #006A92;
+    background: url("../assets/img/bbanner.jpg") no-repeat;
+    background-size: 100% 14em;
+    text-align: right;
+  }
+  #mainnav {
+    position: absolute;
+    bottom: 0;
+    right: 2em;
+  }
+  #search {
+    position: absolute;
+    top: -10em;
+    right: 2em;
+    padding: 0;
+  }
 }
 
-.navbar {
-  margin: 0;
-  padding: 0;
-  height: 14em;
-  background-color: #006A92;
-  background: url("../assets/img/bbanner.jpg") no-repeat;
-  background-size: 100% 14em;
-  background-origin: content-box;
-}
-
-#mainnav {
- margin-top:9.4em;
- text-align: right;
+@media(max-width:768px) {
+  .navbar {
+    background-color: #006A92;
+  }
 }

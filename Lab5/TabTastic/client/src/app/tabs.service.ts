@@ -12,14 +12,10 @@ export class TabsService {
   tabApi = 'api/tabs';
 
   constructor(private http: Http) {
-    console.log("Started Tab Service");
-
   }
 
 
   getTabs(): Observable<Tab[]> {
-
-    console.log("Service getting tabs");
 
     return this.http.get(this.tabApi)
       .map((res) => res.json())
@@ -28,8 +24,8 @@ export class TabsService {
 
 
 
-  getTab(id){
-     return this.http.get(this.tabApi+'/'+id)
+  getTab(id) {
+    return this.http.get(this.tabApi + '/' + id)
       .map((res: Response) => res.json());
   }
 
@@ -50,8 +46,6 @@ export class TabsService {
 
 
   setOpentab(t: Tab) {
-
-    console.log("Open tab set to: " + t);
 
     this.openTab = t;
 

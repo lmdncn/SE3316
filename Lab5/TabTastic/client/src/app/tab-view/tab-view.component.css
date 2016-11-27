@@ -1,0 +1,23 @@
+
+h2{
+    text-align: center;
+}
+
+#tab{
+
+height: 700px;
+border: 1pt solid black;
+width: 100%;
+}
+
+
+table{
+    margin: 30px auto;
+}
+
+button{
+
+margin-top: 1.5em;
+margin-bottom: 1.5em;
+
+}

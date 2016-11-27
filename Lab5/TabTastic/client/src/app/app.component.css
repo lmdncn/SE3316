@@ -45,10 +45,14 @@ h6 {
 }
 
 #landing {
-  margin-bottom: 50px;
+  border: 2pt solid darkred;
+  margin: 2em auto;
+  padding: 4em;  
 }
 
 .btn {
+  width: 80%;
+  margin: auto;
   background: transparent;
   font-family: 'Delius Unicase', cursive;
   -webkit-border-radius: 0;
@@ -93,11 +97,7 @@ h6 {
 }
 
 
-div{
+div.container-fluid{
   margin: 0;
   padding: 0;
-}
-
-div.container-fluid{
-  width: 100%;
 }

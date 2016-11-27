@@ -1,27 +1,46 @@
-<p>
-  tab-view works!
-</p>
-
-<h2 *ngIf="viewTab==null" >
-  No Tab Selected
-</h2>
-
-
-<div *ngIf="viewTab != null" >
-
-<h2>Displaying Selected Tab:</h2>
-
-<h3>
-    {{viewTab.song}}
-</h3>
-
-<h6>
-  {{viewTab.artist}}
-</h6>
+<div *ngIf="viewTab==null" id="noTab" class="container">
+  <h2>
+    No Tab Selected
+  </h2>
+  <button class="btn btn-lg btn-block btn-danger" routerLink="../Home">
+    Select a tab!
+  </button>
+</div>
 
 
-<p>
-  {{viewTab.tab}}
-</p>
+<div id="tabView" class="container" *ngIf="viewTab != null">
 
+<button class="btn btn-primary btn-lg btn-block" routerLink="../Home">Select A Diffrent Tab</button>
+
+  <table class="table">
+    <tr>
+      <th>Song: </th>
+      <td class="text-capitalize">{{viewTab.song}}</td>
+    </tr>
+    <tr>
+      <th>Artist: </th>
+      <td class="text-capitalize">{{viewTab.artist}}</td>
+    </tr>
+     <tr>
+      <th>Tab Description: </th>
+      <td>{{viewTab.desc}}</td>
+    </tr>
+
+     <tr>
+      <th>Tab Author: </th>
+      <td>@{{viewTab.author}}</td>
+    </tr>
+
+
+  </table>
+
+
+  <div id="tab">
+    <p>
+      {{viewTab.tab}}
+    </p>
+  </div>
+
+<button class="btn btn-primary btn-lg btn-block" routerLink="../Home">Select A Diffrent Tab</button>
+  
 </div>

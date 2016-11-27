@@ -15,11 +15,11 @@ export class TabViewComponent implements OnInit {
 
 
 
-  constructor(private tabsSerivice:TabsService) {
+  constructor(private tabsService:TabsService) {
    }
 
   ngOnInit() {
-    console.log(JSON.stringify(this.viewTab));
+    this.viewTab = this.tabsService.openTab;
   }
 
 }
