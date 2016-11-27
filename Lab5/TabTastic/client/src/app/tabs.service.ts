@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Tab } from './tab';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
-
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class TabsService {
 
   openTab: Tab;
-  tabApi = 'http://localhost:8080/api/tabs';
+  tabApi = 'api/tabs';
 
   constructor(private http: Http) {
     console.log("Started Tab Service");
@@ -20,30 +21,33 @@ export class TabsService {
 
     console.log("Service getting tabs");
 
-
-
     return this.http.get(this.tabApi)
-      .map((res: Response) => res.json())
+      .map((res) => res.json())
       .catch(this.handleError);
+  }
 
+
+
+  getTab(id){
+     return this.http.get(this.tabApi+'/'+id)
+      .map((res: Response) => res.json());
   }
 
 
 
 
 
-  createTab(t: Tab): Observable<Tab[]> {
-    let bodyString = JSON.stringify(t);
-    let headers: Headers = new Headers({ 'Content-Type': 'applocation/json' });
+  createTab(t) {
+    let headers: Headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    console.log("Posting to db");
+    // console.log("Posting to db" + JSON.stringify(t));
 
-    return this.http.post(this.tabApi, t, options)
-      .map((res: Response) => res.json())
-      .catch((error: any) => Observable.throw(error.json().error || 'Server Error'));
+    return this.http.post("api/tabs", JSON.stringify(t), options).map((res) => res.json());
 
   }
+
+
 
   setOpentab(t: Tab) {
 

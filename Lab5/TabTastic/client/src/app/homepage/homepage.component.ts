@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import{Tab} from '../tab';
-
-import{TabsService} from "../tabs.service";
+import { Tab } from '../tab';
+import { Observable } from "rxjs/Observable"
+import { TabsService } from "../tabs.service";
 
 
 
 @Component({
-  // moduleId: module.id,
+
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.css']
@@ -14,33 +14,29 @@ import{TabsService} from "../tabs.service";
 
 export class HomepageComponent implements OnInit {
 
-  errorMessage:string;
-  allTabs:Tab[];
-  mode ='Observable';
+  errorMessage: string;
+  allTabs: Tab[];
 
-  constructor(private tabsSerivice:TabsService) { 
+  constructor(private tabsService: TabsService) {
+
   }
 
 
-  goToTab(t:Tab){
-    this.tabsSerivice.setOpentab(t);
+  goToTab(t: Tab) {
+    this.tabsService.setOpentab(t);
   }
 
-  
-
-  ngOnInit():any{
-    this.getAllTabs();
-    
-  }
-
-
-  getAllTabs(){
-
-    this.tabsSerivice.getTabs().subscribe(tabs => this.allTabs = tabs,
-    error => this.errorMessage = <any>error );
-
-    console.log(JSON.stringify(this.allTabs));
+  whatAreTabs(){
+console.log("Current tabs are : " + JSON.stringify(this.allTabs));
 
 
   }
+
+  ngOnInit(): any {
+    this.tabsService.getTabs()
+      .subscribe(
+      tabs => {this.allTabs = tabs;});
+  }
+
+
 }

@@ -15,10 +15,13 @@ var port = 8080;
 
 // set up logger and parsers
 app.use(logger('dev')); // set up logger and parsers
+
+
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: false
-}));
+
+// app.use(bodyParser.urlencoded({
+//     extended: false
+// }));
 app.use(cookieParser());
 
 
@@ -47,6 +50,8 @@ app.use('/', index);
 app.use('/api', tabs);
 
 app.use('/acc', users);
+
+
 
 
 

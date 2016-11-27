@@ -1,8 +1,7 @@
 <div class="container">
 
 
-
-<div *ngIf="tabAdded == true">
+<div *ngIf="complete == 'added'">
 
   <h5>Your Tab has successfully been added!</h5>
   
@@ -10,10 +9,20 @@
   Add another tab:
 </h4>
 
+</div>
+
+<div *ngIf="complete == 'error'">
+
+  <h5>Error Addding Tab!</h5>
+  
+  <h4>
+  Please Try Again:
+</h4>
+
 
 </div>
 
-<div *ngIf="tabAdded != true">
+<div *ngIf="complete == 'welcome'">
 
   <h5>Here you can add a tab!</h5>
   
@@ -27,7 +36,7 @@
 
 
 
-<form [formGroup]="addTabForm" (ngSubmit)="addTabSubmit($event)" *ngIf="toaddTab == null" class="form-horizontal">
+<form [formGroup]="tabForm" (ngSubmit)="addTabSubmit($event)" *ngIf="tabEntry == null" class="form-horizontal">
   <div class="form-group">
     <label class="control-label col-sm-2" for="song">Song Name:</label>
     <div class="col-sm-10">
@@ -76,44 +85,44 @@
   </div>
 </form>
 
-<div *ngIf="toaddTab != null" >
+<div *ngIf="tabEntry != null" >
   
 <h2>Please Confirm The Tab</h2>
 
 
 <p>
 
-{{toaddTab.song}}
+{{tabEntry.song}}
 
 </p>
 
 <p>
 
-{{toaddTab.artist}}
+{{tabEntry.artist}}
 
 </p>
 
 <p>
 
-{{toaddTab.desc}}
+{{tabEntry.desc}}
 
 </p>
 
 <p>
 
-{{toaddTab.author}}
+{{tabEntry.author}}
 
 </p>
 
 <p>
 
-{{toaddTab.authorId}}
+{{tabEntry.authorId}}
 
 </p>
 
 <p>
 
-{{toaddTab.tab}}
+{{tabEntry.tab}}
 
 </p>
 
