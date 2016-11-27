@@ -6,41 +6,31 @@
     Select a tab!
   </button>
 </div>
-
-
-<div id="tabView" class="container" *ngIf="viewTab != null">
-
-<button class="btn btn-primary btn-lg btn-block" routerLink="../Home">Select A Diffrent Tab</button>
-
-  <table class="table">
-    <tr>
-      <th>Song: </th>
-      <td class="text-capitalize">{{viewTab.song}}</td>
-    </tr>
-    <tr>
-      <th>Artist: </th>
-      <td class="text-capitalize">{{viewTab.artist}}</td>
-    </tr>
-     <tr>
-      <th>Tab Description: </th>
-      <td>{{viewTab.desc}}</td>
-    </tr>
-
-     <tr>
-      <th>Tab Author: </th>
-      <td>@{{viewTab.author}}</td>
-    </tr>
-
-
-  </table>
-
-
-  <div id="tab">
-    <p>
-      {{viewTab.tab}}
-    </p>
+<div *ngIf="viewTab !=null && (!(authService.loggedIn()) || viewTab.authorId != authService.userId)">
+  <div id="tabView" class="container" *ngIf="viewTab != null">
+    <button class="btn btn-primary btn-lg btn-block" routerLink="../Home">Select A Diffrent Tab</button>
+    <table class="table">
+      <tr>
+        <th>Song: </th>
+        <td class="text-capitalize">{{viewTab.song}}</td>
+      </tr>
+      <tr>
+        <th>Artist: </th>
+        <td class="text-capitalize">{{viewTab.artist}}</td>
+      </tr>
+      <tr>
+        <th>Tab Description: </th>
+        <td>{{viewTab.desc}}</td>
+      </tr>
+      <tr>
+        <th>Tab Author: </th>
+        <td>@{{viewTab.author}}</td>
+      </tr>
+    </table>
+    <div id="tab">
+      <div [innerHTML]="tabParsed">
+    </div>
   </div>
-
-<button class="btn btn-primary btn-lg btn-block" routerLink="../Home">Select A Diffrent Tab</button>
-  
+  <button class="btn btn-primary btn-lg btn-block" routerLink="../Home">Select A Diffrent Tab</button>
+</div>
 </div>

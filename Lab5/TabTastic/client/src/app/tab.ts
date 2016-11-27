@@ -2,17 +2,17 @@
 
 
 export class Tab {
-    id: number;
+    id: string;
     song: string;
     artist: string;
     desc: string;
     author: string;
-    authorId: number;
+    authorId: string;
     tab: string;
     dateMade:Date;
     isPublic:Boolean;
 
-    constructor(song: string, artist: string, desc: string, author: string, authorId: number,tab: string, isPublic:Boolean = true) {
+    constructor(song: string, artist: string, desc: string, author: string, authorId: string,tab: string, isPublic:Boolean = true) {
         this.song = song;
         this.artist = artist;
         this.desc = desc;

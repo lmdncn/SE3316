@@ -61,6 +61,7 @@ languageDictionary: {
             });
 
             this.lockSU.hide();
+            this.router.navigateByUrl('/Home');
         });
 
          this.lockLI.on('authenticated', (authResult: any) => {
@@ -77,6 +78,7 @@ languageDictionary: {
             });
 
             this.lockLI.hide();
+            this.router.navigateByUrl('/Home');
         });
 
 
@@ -90,6 +92,7 @@ languageDictionary: {
     login() {
         // Call the show method to display the widget.
         this.lockLI.show();
+        
     };
 
     signUp() {

@@ -71,6 +71,11 @@ console.log("Getting tabs by " + this.authService.userId);
   }
 
 
+deleteTab(t){
+  console.log("Deleting Tab" + JSON.stringify(t));
+  return this.authHttp.delete("api/tabs"+'/?TabId='+t._id+'&UserId='+this.authService.userId).map((res: Response) => res.json());
+}
+
 
   setOpentab(t: Tab) {
 

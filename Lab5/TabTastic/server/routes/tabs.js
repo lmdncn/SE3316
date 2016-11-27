@@ -27,7 +27,7 @@ router.post('/tabs', authCheck, function (req, res, next) {
         author: req.body.author,
         authorId: req.body.authorId,
         tab: req.body.tab,
-        isPublic : req.body.isPublic
+        isPublic: req.body.isPublic
     });
 
 
@@ -35,6 +35,7 @@ router.post('/tabs', authCheck, function (req, res, next) {
 
     tab.save(function (err) {
         if (err) {
+
             res.send(err);
         }
 
@@ -42,6 +43,23 @@ router.post('/tabs', authCheck, function (req, res, next) {
     });
 
 });
+
+router.delete('/tabs', authCheck, function (req, res, next) {
+
+    console.log('Delete the tab with id ' + req.query.TabId);
+
+    Tabs.remove({
+        '_id': req.query.TabId,
+        'authorId':req.query.UserId
+    }, function (err) {
+        if (err) {
+            res.send(err)
+        }
+    });
+});
+
+
+
 
 
 router.get('/tabs', function (req, res, next) {
@@ -66,9 +84,6 @@ router.get('/tabs', function (req, res, next) {
 
 router.get('/tabs/myPrivate', authCheck, function (req, res, next) {
 
-    console.log('getting tabs');
-    console.log(req.query.UserId);
-
     Tabs.find({
         'authorId': req.query.UserId,
         'isPublic': false
@@ -87,9 +102,6 @@ router.get('/tabs/myPrivate', authCheck, function (req, res, next) {
 });
 
 router.get('/tabs/myPublic', authCheck, function (req, res, next) {
-
-    console.log('getting tabs');
-    console.log(req.query.UserId);
 
     Tabs.find({
         'authorId': req.query.UserId,

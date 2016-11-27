@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Tab } from '../tab';
 import { Observable } from "rxjs/Observable";
 import { TabsService } from "../tabs.service";
-import{AuthService} from '../auth.service';
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -18,9 +18,11 @@ export class HomepageComponent implements OnInit {
   allTabs: Tab[];
   myPrivTabs: Tab[];
   myPubTabs: Tab[];
-  constructor(private tabsService: TabsService,private authService: AuthService) {
+  constructor(private tabsService: TabsService, private authService: AuthService) {
 
   }
+
+
 
 
   goToTab(t: Tab) {
@@ -30,17 +32,19 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): any {
     this.tabsService.getTabs()
       .subscribe(
-      tabs => {this.allTabs = tabs;});
+      tabs => { this.allTabs = tabs; });
 
-if(this.authService.loggedIn()){
-   this.tabsService.getMyPrivateTabs()
+    if (this.authService.loggedIn()) {
+      this.tabsService.getMyPrivateTabs()
+        .subscribe(
+        tabs => { this.myPrivTabs = tabs; });
+    
+
+
+    this.tabsService.getMyPublicTabs()
       .subscribe(
-      tabs => {this.myPrivTabs = tabs;});}
-
-
-         this.tabsService.getMyPublicTabs()
-      .subscribe(
-      tabs => {this.myPubTabs = tabs;});}
+      tabs => { this.myPubTabs = tabs; });
+    }
 
   }
 
