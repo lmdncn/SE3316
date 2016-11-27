@@ -26,7 +26,8 @@ router.post('/tabs', authCheck, function (req, res, next) {
         desc: req.body.desc,
         author: req.body.author,
         authorId: req.body.authorId,
-        tab: req.body.tab
+        tab: req.body.tab,
+        isPublic : req.body.isPublic
     });
 
 

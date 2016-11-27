@@ -64,7 +64,7 @@ console.log("Getting tabs by " + this.authService.userId);
     let headers: Headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    // console.log("Posting to db" + JSON.stringify(t));
+    console.log("Posting to db" + JSON.stringify(t));
 
     return this.authHttp.post("api/tabs", JSON.stringify(t), options).map((res) => res.json());
 

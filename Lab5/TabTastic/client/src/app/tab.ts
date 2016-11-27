@@ -19,6 +19,7 @@ export class Tab {
         this.author = author;
         this.authorId = authorId;
         this.tab = tab;
+        this.isPublic = isPublic;
     }
 
 

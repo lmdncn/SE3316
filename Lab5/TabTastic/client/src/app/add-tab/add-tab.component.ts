@@ -25,6 +25,7 @@ export class AddTabComponent implements OnInit {
       song: ['', Validators.required],
       artist: ['', Validators.required],
       desc: ['', Validators.nullValidator],
+      private: [false, Validators.nullValidator],
       tab: ['', Validators.required],
     });
   }
@@ -41,7 +42,8 @@ export class AddTabComponent implements OnInit {
       this.tabForm.value.desc,
       this.authService.nickname,
       this.authService.userId,
-      this.tabForm.value.tab
+      this.tabForm.value.tab,
+      !(this.tabForm.value.private)
     );
 
     this.complete = 'nothing';
