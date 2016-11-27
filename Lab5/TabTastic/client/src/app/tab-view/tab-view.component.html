@@ -6,31 +6,80 @@
     Select a tab!
   </button>
 </div>
-<div *ngIf="viewTab !=null && (!(authService.loggedIn()) || viewTab.authorId != authService.userId)">
-  <div id="tabView" class="container" *ngIf="viewTab != null">
-    <button class="btn btn-primary btn-lg btn-block" routerLink="../Home">Select A Diffrent Tab</button>
-    <table class="table">
-      <tr>
-        <th>Song: </th>
-        <td class="text-capitalize">{{viewTab.song}}</td>
-      </tr>
-      <tr>
-        <th>Artist: </th>
-        <td class="text-capitalize">{{viewTab.artist}}</td>
-      </tr>
-      <tr>
-        <th>Tab Description: </th>
-        <td>{{viewTab.desc}}</td>
-      </tr>
-      <tr>
-        <th>Tab Author: </th>
-        <td>@{{viewTab.author}}</td>
-      </tr>
-    </table>
-    <div id="tab">
-      <div [innerHTML]="tabParsed">
+<div *ngIf="viewTab !=null">
+  <div id="tabView" class="container">
+    <div *ngIf="authService.loggedIn() && viewTab.authorId == authService.userId && edit == false">
+      <h3>This tab is yours!</h3>
+      <button (click)='editTab(true)'>Edit Tab</button>
+      <div>
+        <div *ngIf="!authService.loggedIn() || edit == false">
+          <button class="btn btn-primary btn-lg btn-block" routerLink="../Home">Select A Diffrent Tab</button>
+          <table class="table">
+            <tr>
+              <th>Song: </th>
+              <td class="text-capitalize">{{viewTab.song}}</td>
+            </tr>
+            <tr>
+              <th>Artist: </th>
+              <td class="text-capitalize">{{viewTab.artist}}</td>
+            </tr>
+            <tr>
+              <th>Tab Description: </th>
+              <td>{{viewTab.desc}}</td>
+            </tr>
+            <tr>
+              <th>Tab Author: </th>
+              <td>@{{viewTab.author}}</td>
+            </tr>
+          </table>
+          <button *ngIf="!fullScreen" class="btn btn-default btn-sm" (click)="fullscreen(true)">
+        Fullscreen View
+      </button>
+          <div [ngClass]="{'overlay': fullScreen}" id="tab">
+            <a *ngIf="fullScreen" class="closebtn" (click)="fullscreen(false)">
+        Exit Fullscreen
+      </a>
+            <div [ngClass]="{'overlay-content': fullScreen}" [innerHTML]="tabParsed">
+            </div>
+          </div>
+          <button class="btn btn-primary btn-lg btn-block" routerLink="../Home">Select A Diffrent Tab</button>
+        </div>
+      </div>
     </div>
-  </div>
-  <button class="btn btn-primary btn-lg btn-block" routerLink="../Home">Select A Diffrent Tab</button>
-</div>
-</div>
+
+
+    <div *ngIf="authService.loggedIn() && viewTab.authorId == authService.userId && edit == true">
+        <h2>Editing Tab!</h2>
+        
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="song">Song Name:</label>
+            <div class="col-sm-10">
+              <input [(ngModel)]="viewTab.song" type="text" class="form-control" id="song" placeholder="Song...">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="artist">Artist Name:</label>
+            <div class="col-sm-10">
+              <input [(ngModel)]="viewTab.artist" type="text" class="form-control" id="artist" placeholder="Artist...">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="desc">Tab Description:</label>
+            <div class="col-sm-10">
+              <input [(ngModel)]="viewTab.desc" type="text" class="form-control" id="desc" placeholder="Description...">
+            </div>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="viewTab.isPublic">Private</label>
+          </div>
+          <div class="form-group">
+            <label  for="tab">Enter Tab:</label>
+            <textarea [(ngModel)]="viewTab.tab" class="form-control" rows="20" id="tab"></textarea>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button (click)="changeTab()" class="btn btn-success">Submit</button>
+            </div>
+          </div>
+      
+      </div>

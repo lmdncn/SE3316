@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Tab } from '../tab';
 import { AuthService } from '../auth.service';
 import { TabsService } from "../tabs.service";
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -13,9 +14,10 @@ export class TabViewComponent implements OnInit {
 
   viewTab: Tab;
   tabParsed: String = "";
+  fullScreen: Boolean = false;
+  edit: Boolean = false;
 
-
-  constructor(private tabsService: TabsService, private authService: AuthService) {
+  constructor(private tabsService: TabsService, private authService: AuthService,private router:Router) {
   }
 
   ngOnInit() {
@@ -37,13 +39,24 @@ export class TabViewComponent implements OnInit {
       temp = temp.replace(']', '</strong><span>');
       index++;
     }
-    temp = "<span>"+temp+"</span>"
+    temp = "<span>" + temp + "</span>"
     return temp;
   }
 
+  fullscreen(b: Boolean) {
+    this.fullScreen = b;
+  }
 
+  editTab(b: Boolean) {
+    this.edit = b;
+  }
 
+  changeTab() {
 
+    this.tabsService.changeTab(this.viewTab).subscribe();
+    this.edit = false;
+
+  }
 
 }
 

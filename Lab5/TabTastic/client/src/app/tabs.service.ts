@@ -84,6 +84,16 @@ deleteTab(t){
 
   }
 
+  changeTab(t){
+     let headers: Headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    console.log("Putting to db" + JSON.stringify(t));
+
+    return this.authHttp.put("api/tabs"+"/?TabId="+t._id, JSON.stringify(t), options).map((res) => res.json());
+
+  }
+
 
 
 

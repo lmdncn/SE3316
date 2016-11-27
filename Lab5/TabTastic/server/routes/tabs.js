@@ -20,7 +20,6 @@ router.post('/tabs', authCheck, function (req, res, next) {
     console.log('posting tab');
 
     let tab = new Tabs({
-
         song: req.body.song,
         artist: req.body.artist,
         desc: req.body.desc,
@@ -50,7 +49,7 @@ router.delete('/tabs', authCheck, function (req, res, next) {
 
     Tabs.remove({
         '_id': req.query.TabId,
-        'authorId':req.query.UserId
+        'authorId': req.query.UserId
     }, function (err) {
         if (err) {
             res.send(err)
@@ -59,6 +58,30 @@ router.delete('/tabs', authCheck, function (req, res, next) {
 });
 
 
+router.put('/tabs', authCheck, function (req, res, next) {
+
+
+    Tabs.findById(req.query.TabId, function (err, t) {
+        if (!t)
+            return next(new Error('Could not load Document'));
+        else {
+            // do your updates here
+            t.song = req.body.song;
+            t.artist = req.body.artist;
+            t.desc = req.body.desc;
+            t.tab = req.body.tab;
+            t.isPublic = req.body.isPublic;
+
+
+            t.save(function (err) {
+                if (err)
+                    console.log('error')
+                else
+                    console.log('success')
+            });
+        }
+    });
+});
 
 
 
