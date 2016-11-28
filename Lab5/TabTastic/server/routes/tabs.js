@@ -12,8 +12,6 @@ const authCheck = jwt({
 });
 
 
-
-
 router.post('/tabs', authCheck, function (req, res, next) {
 
 

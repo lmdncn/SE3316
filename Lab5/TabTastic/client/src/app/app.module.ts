@@ -20,6 +20,7 @@ import { AuthHttp, AuthConfig, AUTH_PROVIDERS, provideAuth } from 'angular2-jwt'
 
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { ChordsComponent } from './chords/chords.component';
 
 
 
@@ -39,6 +40,7 @@ const appRoutes: Routes = [
         HomepageComponent,
         TabViewComponent,
         AddTabComponent,
+        ChordsComponent,
     ],
     imports: [
         BrowserModule,
