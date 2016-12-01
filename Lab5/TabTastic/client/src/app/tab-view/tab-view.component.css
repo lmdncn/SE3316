@@ -1,5 +1,10 @@
+td{
+  font-size: 1.3em;
+}
+
 h2 {
   text-align: center;
+  margin-top: 2em;
 }
 
 table {

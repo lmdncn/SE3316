@@ -49,7 +49,6 @@ export class AuthService {
     constructor(private router: Router) {
         // Add callback for lock `authenticated` event
         this.lockSU.on('authenticated', (authResult: any) => {
-            this.router.navigateByUrl('/UserWelcome');
             localStorage.setItem('id_token', authResult.idToken);
 
             this.lockSU.getProfile(authResult.idToken, (error: any, profile: any) => {
@@ -66,7 +65,6 @@ export class AuthService {
         });
 
         this.lockLI.on('authenticated', (authResult: any) => {
-            this.router.navigateByUrl('/UserWelcome');
             localStorage.setItem('id_token', authResult.idToken);
 
             this.lockLI.getProfile(authResult.idToken, (error: any, profile: any) => {
@@ -114,10 +112,12 @@ export class AuthService {
         // from local storage
         localStorage.removeItem('profile');
         localStorage.removeItem('id_token');
+        localStorage.removeItem('opentab');
         this.userId = null;
         this.nickname = null;
 
-        // Send the user back to the public deals page after logout
+
+
         this.router.navigateByUrl('/Home');
     }
 

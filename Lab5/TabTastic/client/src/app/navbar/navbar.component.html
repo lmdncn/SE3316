@@ -19,20 +19,23 @@
         <!--<li [routerLinkActive]="['active']"><a routerLink='SignIn'>Sign In</a></li>
         <li [routerLinkActive]="['active']"><a routerLink='SignUp'>Sign Up</a></li>-->
 
-        <li>
+        <li *ngIf="!authService.loggedIn()">
             <!-- We'll show the login link if the user is not currently logged in -->
-            <a (click)=authService.login() *ngIf="!authService.loggedIn()">Log In</a>
+            <a (click)=authService.login() >Log In</a>
           </li>
 
-          <li>
+          <li *ngIf="!authService.loggedIn()">
             <!-- We'll show the login link if the user is not currently logged in -->
-            <a (click)=authService.signUp() *ngIf="!authService.loggedIn()">Sign Up</a>
+            <a (click)=authService.signUp() >Sign Up</a>
           </li>
 
 
-          <li>
+          <li *ngIf="authService.loggedIn()">
             <!-- On the other hand, if the user is logged in, we'll show a log out link -->
-            <a (click)=authService.logout() *ngIf="authService.loggedIn()">Log Out</a>
+            <a (click)=authService.logout() >Log Out</a>
+          </li>
+          <li [routerLinkActive]="['active']" *ngIf="authService.loggedIn()">
+           <a routerLink="UserWelcome">@{{authService.nickname}}</a> 
           </li>
 
 

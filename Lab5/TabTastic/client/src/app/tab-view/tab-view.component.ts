@@ -24,6 +24,11 @@ export class TabViewComponent implements OnInit {
     this.viewTab = this.tabsService.openTab;
     if (this.viewTab != null) {
       this.tabParsed = this.chordpro(this.viewTab.tab);
+    }else{
+      let t = localStorage.getItem('opentab');
+      if(t!=null){
+        this.viewTab = JSON.parse(t);
+      }
     }
   }
 
