@@ -115,9 +115,6 @@ export class AuthService {
         localStorage.removeItem('opentab');
         this.userId = null;
         this.nickname = null;
-
-
-
         this.router.navigateByUrl('/Home');
     }
 

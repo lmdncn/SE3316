@@ -1,4 +1,4 @@
-td{
+td {
   font-size: 1.3em;
 }
 
@@ -8,7 +8,7 @@ h2 {
 }
 
 table {
-  border: solid black 2pt;
+  border: 2pt solid #DDD;
   border-radius: 5px;
   padding: 4px;
 }
@@ -16,14 +16,14 @@ table {
 h3 {
   text-align: center;
   margin-top: 2em;
-  border: solid black 2pt;
+  border: 2pt solid #DDD;
   border-radius: 5px;
   padding: 0.5em;
 }
 
 #tab {
   height: 700px;
-  border: 2pt solid black;
+  border: 2pt solid #DDD;
   width: 100%;
   padding: 0.4em;
 }
@@ -32,11 +32,25 @@ table {
   margin: 30px auto;
 }
 
+div#metaEdit {
+  border: 2pt solid #DDD;
+}
+
+div.form-group {
+  padding-top: 1.5em;
+  padding-bottom: 1em;
+}
+
 button {
   margin-top: 1.5em;
   margin-bottom: 1.5em;
 }
 
+.checkbox{
+  text-align: center;
+  font-size: 1.3em;
+  margin-top: 2em;
+}
 
 /*Overlay ====================================================================================== */
 

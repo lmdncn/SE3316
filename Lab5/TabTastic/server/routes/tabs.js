@@ -59,7 +59,7 @@ router.delete('/tabs', authCheck, function (req, res, next) {
 router.put('/tabs', authCheck, function (req, res, next) {
 
 
-    Tabs.findById(req.query.TabId, function (err, t) {
+    Tabs.findById(req.body._id, function (err, t) {
         if (!t)
             return next(new Error('Could not load Document'));
         else {

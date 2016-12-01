@@ -12,41 +12,23 @@ import { Router } from "@angular/router";
 })
 export class TabViewComponent implements OnInit {
 
-  viewTab: Tab;
+
+  tabEditBackup: Tab;
   tabParsed: String = "";
   fullScreen: Boolean = false;
   edit: Boolean = false;
 
-  constructor(private tabsService: TabsService, private authService: AuthService,private router:Router) {
+  constructor(private tabsService: TabsService, private authService: AuthService, private router: Router) {
   }
 
   ngOnInit() {
-    this.viewTab = this.tabsService.openTab;
-    if (this.viewTab != null) {
-      this.tabParsed = this.chordpro(this.viewTab.tab);
-    }else{
-      let t = localStorage.getItem('opentab');
-      if(t!=null){
-        this.viewTab = JSON.parse(t);
-      }
-    }
   }
 
   deleteTab() {
-    this.tabsService.deleteTab(this.viewTab).subscribe();
+    this.tabsService.deleteTab(this.tabsService.openTab).subscribe();
   }
 
-  chordpro(t: String): String {
-    let temp = t;
-    let index = 0;
-    while (index < t.length / 2) {
-      temp = temp.replace('[', '</span><strong>');
-      temp = temp.replace(']', '</strong><span>');
-      index++;
-    }
-    temp = "<span>" + temp + "</span>"
-    return temp;
-  }
+
 
   fullscreen(b: Boolean) {
     this.fullScreen = b;
@@ -54,13 +36,23 @@ export class TabViewComponent implements OnInit {
 
   editTab(b: Boolean) {
     this.edit = b;
+    this.tabEditBackup = new Tab(this.tabsService.openTab.song, this.tabsService.openTab.artist,
+      this.tabsService.openTab.desc, this.tabsService.openTab.author, this.tabsService.openTab.authorId,
+      this.tabsService.openTab.tab, this.tabsService.openTab.isPublic)
+
+
   }
 
   changeTab() {
-
-    this.tabsService.changeTab(this.viewTab).subscribe();
+    this.tabsService.changeTab().subscribe();
     this.edit = false;
+    this.tabEditBackup = null;
+  }
 
+  cancelEdit() {
+    this.edit = false;
+    this.tabsService.openTab = this.tabEditBackup;
+    this.tabsService.setOpentab(this.tabEditBackup);
   }
 
 }

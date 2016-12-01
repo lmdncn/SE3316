@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { AuthHttp } from 'angular2-jwt';
-import{AuthService} from './auth.service';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class TabsService {
@@ -13,7 +13,7 @@ export class TabsService {
   openTab: Tab;
   tabApi = 'api/tabs';
 
-  constructor(private http: Http,private authHttp: AuthHttp,private authService: AuthService) {
+  constructor(private http: Http, private authHttp: AuthHttp, private authService: AuthService) {
   }
 
 
@@ -24,6 +24,17 @@ export class TabsService {
       .catch(this.handleError);
   }
 
+  getOpenTab():Tab{
+    if(this.openTab == null && this.authService.loggedIn()){
+      let t = JSON.parse(localStorage.getItem('opentab'));
+      if(t!=null){
+        this.openTab = t;
+        return t;
+      }
+    }
+    return this.openTab;
+  }
+
 
 
   getTab(id) {
@@ -31,31 +42,41 @@ export class TabsService {
       .map((res: Response) => res.json());
   }
 
+  chordpro(t: String): String {
+    let temp = t;
+    let index = 0;
+    while (index < t.length / 2) {
+      temp = temp.replace('[', '</span><strong>');
+      temp = temp.replace(']', '</strong><span>');
+      index++;
+    }
+    temp = "<span>" + temp + "</span>"
+    return temp;
+  }
 
 
-
- getPrivateTab(): Observable<Tab[]> {
+  getPrivateTab(): Observable<Tab[]> {
 
     return this.authHttp.get('api/tabs/private')
       .map((res) => res.json())
       .catch(this.handleError);
   }
 
- getMyPrivateTabs() {
-  
-console.log("Getting tabs by " + this.authService.userId);
-    return this.authHttp.get('api/tabs/myPrivate' + '/?UserId=' + this.authService.userId )
-      .map((res: Response) => res.json());
-    
- }
+  getMyPrivateTabs() {
 
- getMyPublicTabs() {
-  
-console.log("Getting tabs by " + this.authService.userId);
-    return this.authHttp.get('api/tabs/myPublic' + '/?UserId=' + this.authService.userId )
+    console.log("Getting tabs by " + this.authService.userId);
+    return this.authHttp.get('api/tabs/myPrivate' + '/?UserId=' + this.authService.userId)
       .map((res: Response) => res.json());
-    
- }
+
+  }
+
+  getMyPublicTabs() {
+
+    console.log("Getting tabs by " + this.authService.userId);
+    return this.authHttp.get('api/tabs/myPublic' + '/?UserId=' + this.authService.userId)
+      .map((res: Response) => res.json());
+
+  }
 
 
 
@@ -71,26 +92,24 @@ console.log("Getting tabs by " + this.authService.userId);
   }
 
 
-deleteTab(t){
-  console.log("Deleting Tab" + JSON.stringify(t));
-  return this.authHttp.delete("api/tabs"+'/?TabId='+t._id+'&UserId='+this.authService.userId).map((res: Response) => res.json());
-}
+  deleteTab(t) {
+    console.log("Deleting Tab" + JSON.stringify(t));
+    return this.authHttp.delete("api/tabs" + '/?TabId=' + t._id + '&UserId=' + this.authService.userId).map((res: Response) => res.json());
+  }
 
 
   setOpentab(t: Tab) {
-
     this.openTab = t;
-
-
+    localStorage.setItem('opentab',JSON.stringify(t));
   }
 
-  changeTab(t){
-     let headers: Headers = new Headers({ 'Content-Type': 'application/json' });
+  changeTab() {
+    let headers: Headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    console.log("Putting to db" + JSON.stringify(t));
+    console.log("Putting to db" + JSON.stringify(this.openTab));
 
-    return this.authHttp.put("api/tabs"+"/?TabId="+t._id, JSON.stringify(t), options).map((res) => res.json());
+    return this.authHttp.put("api/tabs", JSON.stringify(this.openTab), options).map((res) => res.json());
 
   }
 

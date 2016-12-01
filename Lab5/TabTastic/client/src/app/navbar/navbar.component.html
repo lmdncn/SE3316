@@ -32,7 +32,7 @@
 
           <li *ngIf="authService.loggedIn()">
             <!-- On the other hand, if the user is logged in, we'll show a log out link -->
-            <a (click)=authService.logout() >Log Out</a>
+            <a (click)=logoutAcc() >Log Out</a>
           </li>
           <li [routerLinkActive]="['active']" *ngIf="authService.loggedIn()">
            <a routerLink="UserWelcome">@{{authService.nickname}}</a> 
