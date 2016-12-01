@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
-import{AuthService} from './auth.service';
+import{AuthService} from './services/auth.service';
 
-import{TabsService} from "./tabs.service";
-import {Tab} from './tab';
+import{TabsService} from "./services/tabs.service";
+import {Tab} from './models/tab';
 // import{AuthService} from './auth.service';
 
 

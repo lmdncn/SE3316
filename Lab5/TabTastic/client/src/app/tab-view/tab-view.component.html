@@ -6,11 +6,12 @@
     Select a tab!
   </button>
 </div>
+
 <div *ngIf="viewTab !=null">
   <div id="tabView" class="container">
     <div *ngIf="authService.loggedIn() && viewTab.authorId == authService.userId && edit == false">
-      <h3>This tab is yours!</h3>
-      <button (click)='editTab(true)'>Edit Tab</button>
+      <h3>This Tab Belongs To You!</h3>
+      <button class="btn btn-lg btn-warning btn-block" (click)='editTab(true)'>Edit Tab</button>
       <div>
         <div *ngIf="!authService.loggedIn() || edit == false">
           <button class="btn btn-primary btn-lg btn-block" routerLink="../Home">Select A Diffrent Tab</button>
@@ -32,7 +33,7 @@
               <td>@{{viewTab.author}}</td>
             </tr>
           </table>
-          <button *ngIf="!fullScreen" class="btn btn-default btn-sm" (click)="fullscreen(true)">
+          <button *ngIf="!fullScreen" class="btn btn-default btn-block btn-lg btn-primary" (click)="fullscreen(true)">
         Fullscreen View
       </button>
           <div [ngClass]="{'overlay': fullScreen}" id="tab">

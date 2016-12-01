@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Tab } from '../tab';
-import { AuthService } from '../auth.service';
-import { TabsService } from "../tabs.service";
+import { Tab } from '../models/tab';
+import { AuthService } from '../services/auth.service';
+import { TabsService } from "../services/tabs.service";
 import { Router } from "@angular/router";
 
 

@@ -8,21 +8,29 @@
   }
 
 
-
-
-
   /* link */
   .navbar-default .navbar-nav>li>a {
-    color: white;
+    color: black;
+    text-decoration: none;
+    text-shadow: none;
+    font-size: 1.2em;
+    text-align: center;
   }
 
  /* link */
   .navbar-default .navbar-nav>li>a:hover {
     color: black;
     background-color: white;
+    
   }
 
+  .navbar-default .navbar-nav>li.active>a{
+    font-weight: bold;
+  }
 
+  .navbar-default .navbar-nav>li{
+    width: 10em;
+  }
 
 
   .navbar {
@@ -40,13 +48,7 @@
   #mainnav {
     position: absolute;
     bottom: 0;
-    right: 2em;
-  }
-  #search {
-    position: absolute;
-    top: -4em;
-    right: 2em;
-    padding: 0;
+    right: 0;
   }
 }
 

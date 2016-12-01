@@ -9,46 +9,47 @@ declare var Auth0Lock: any;
 
 @Injectable()
 export class AuthService {
-    userId:any;
-    nickname:any;
+    userId: any;
+    nickname: any;
 
     lockLI = new Auth0Lock('yOHOPEsMPE4f5l5JbRFuMDOO188oxW9X', 'lmdncn.auth0.com', {
-       
-        languageDictionary: {
-    title: "TabTastic"
-  },
 
-    theme: {
-    logo: '../assets/img/tab.png',
-    primaryColor: '#BF0B0D',
-    
-  },
-  socialButtonStyle: 'small',
-  allowSignUp: false
+        languageDictionary: {
+            title: "TabTastic"
+        },
+
+        theme: {
+            logo: '../assets/img/tab.png',
+            primaryColor: '#BF0B0D',
+
+        },
+        socialButtonStyle: 'small',
+        allowSignUp: false
 
 
     });
 
     lockSU = new Auth0Lock('yOHOPEsMPE4f5l5JbRFuMDOO188oxW9X', 'lmdncn.auth0.com', {
-       
-languageDictionary: {
-    title: "TabTastic"
-  },
+
+        languageDictionary: {
+            title: "TabTastic"
+        },
 
 
-    theme: {
-    logo: '../assets/img/tab.png',
-    primaryColor: '#BF0B0D',
-    
-  },
-  socialButtonStyle: 'small',
-  allowLogin: false
+        theme: {
+            logo: '../assets/img/tab.png',
+            primaryColor: '#BF0B0D',
+
+        },
+        socialButtonStyle: 'small',
+        allowLogin: false
 
     });
 
     constructor(private router: Router) {
         // Add callback for lock `authenticated` event
         this.lockSU.on('authenticated', (authResult: any) => {
+            this.router.navigateByUrl('/UserWelcome');
             localStorage.setItem('id_token', authResult.idToken);
 
             this.lockSU.getProfile(authResult.idToken, (error: any, profile: any) => {
@@ -61,10 +62,11 @@ languageDictionary: {
             });
 
             this.lockSU.hide();
-            this.router.navigateByUrl('/Home');
+
         });
 
-         this.lockLI.on('authenticated', (authResult: any) => {
+        this.lockLI.on('authenticated', (authResult: any) => {
+            this.router.navigateByUrl('/UserWelcome');
             localStorage.setItem('id_token', authResult.idToken);
 
             this.lockLI.getProfile(authResult.idToken, (error: any, profile: any) => {
@@ -73,16 +75,16 @@ languageDictionary: {
                 }
                 this.userId = profile.user_id;
                 this.nickname = profile.nickname;
-                console.log (JSON.stringify(profile.user_id));
+                console.log(JSON.stringify(profile.user_id));
                 localStorage.setItem('profile', JSON.stringify(profile));
             });
 
             this.lockLI.hide();
-            this.router.navigateByUrl('/Home');
+
         });
 
 
-        if(this.userId == null && this.loggedIn()){
+        if (this.userId == null && this.loggedIn()) {
             let temp = JSON.parse(localStorage.getItem('profile'));
             this.userId = temp.user_id;
             this.nickname = temp.nickname;
@@ -92,7 +94,7 @@ languageDictionary: {
     login() {
         // Call the show method to display the widget.
         this.lockLI.show();
-        
+
     };
 
     signUp() {

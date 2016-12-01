@@ -11,9 +11,9 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { TabViewComponent } from './tab-view/tab-view.component';
 
 import { RouterModule, Routes } from '@angular/router';
-import { TabsService } from "./tabs.service";
-import { AuthService } from './auth.service';
-import { AuthGuardService } from './auth-guard.service';
+import { TabsService } from "./services/tabs.service";
+import { AuthService } from './services/auth.service';
+import { AuthGuardService } from './services/auth-guard.service';
 import { AddTabComponent } from './add-tab/add-tab.component';
 
 import { AuthHttp, AuthConfig, AUTH_PROVIDERS, provideAuth } from 'angular2-jwt';
@@ -21,6 +21,7 @@ import { AuthHttp, AuthConfig, AUTH_PROVIDERS, provideAuth } from 'angular2-jwt'
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { ChordsComponent } from './chords/chords.component';
+import { UserWelcomeComponent } from './user-welcome/user-welcome.component';
 
 
 
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
     { path: '', redirectTo: 'Home', pathMatch: 'full' },
     { path: 'Home', component: HomepageComponent },
     { path: 'TabView', component: TabViewComponent },
-    { path: 'AddTab', component: AddTabComponent, canActivate: [AuthGuardService] }
+    { path: 'AddTab', component: AddTabComponent, canActivate: [AuthGuardService] },
+    { path: 'UserWelcome', component: UserWelcomeComponent, canActivate: [AuthGuardService] }
 ];
 
 
@@ -41,6 +43,7 @@ const appRoutes: Routes = [
         TabViewComponent,
         AddTabComponent,
         ChordsComponent,
+        UserWelcomeComponent,
     ],
     imports: [
         BrowserModule,

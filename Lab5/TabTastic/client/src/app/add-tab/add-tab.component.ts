@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Tab } from '../tab';
-import { TabsService } from "../tabs.service";
+import { Tab } from '../models/tab';
+import { TabsService } from "../services/tabs.service";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
-import{AuthService} from '../auth.service';
+import{AuthService} from '../services/auth.service';
 
 
 @Component({

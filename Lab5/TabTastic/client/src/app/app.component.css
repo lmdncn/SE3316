@@ -10,12 +10,9 @@ right: 4em;
 
 
 h1 {
-  text-align: center;
-  font-family: 'Delius Unicase', cursive;
-  font-size: 3.5em;
+  font-size: 6em;
   color: black;
-  /*text-shadow: -1px 0 #000000,0 1px #000000,1px 0 #000000,0 -1px #000000;*/
-}
+ }
 
 h2 {
   text-align: center;

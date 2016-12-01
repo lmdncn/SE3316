@@ -2,3 +2,40 @@ div.container{
 
     margin-top: 4em;
 }
+
+a{
+    text-align: center;
+    color: black;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+a.thumbnail:active{
+position: relative;
+top: 3px;
+}
+
+h5{
+    font-size: 3em;
+    border: 1pt solid #DDD;
+    border-radius: 5pt;
+    box-sizing: border-box;
+    padding: 3px;
+    margin-top: 0.2em;
+}
+
+
+div.listTable{
+    border: 1pt solid #DDD;
+    margin-top: 0.3em;
+    height: 400px;
+    overflow-y: scroll;
+    margin-bottom: 30px;
+}
+
+h6{
+    text-align: center;
+    font-size: 1.5em;
+}

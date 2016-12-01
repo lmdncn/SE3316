@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Tab } from './tab';
+import { Tab } from '../models/tab';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';

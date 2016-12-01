@@ -1,3 +1,55 @@
-div{
-    border: 2pts solid pink;
+
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+h3{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+p{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+h2{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+button{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+a{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+h5{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+h3{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+h4{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+h6{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+
+td{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+th{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+a{
+    cursor: pointer;
 }

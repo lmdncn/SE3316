@@ -1,133 +1,139 @@
 <div class="container">
-  <!--<div class="row">
-  <div class="col-xs-6 col-md-3">
-    <a href="" class="thumbnail">
-      <img src="http://placehold.it/350x150" alt="Featured">
-    </a>
+  <div class="row" *ngIf="authService.loggedIn()">
+    <div class="col-xs-6 col-md-3">
+      <a (click)="show('public')" class="thumbnail">
+        <img src="../../assets/img/public.png" alt="Public Tabs"> Public Tabs
+      </a>
+    </div>
+    <div class="col-xs-6 col-md-3">
+      <a (click)="show('favorites')" class="thumbnail">
+        <img src="../../assets/img/bookmarked.png" alt="My Favorite Tabs"> My Favorite Tabs
+      </a>
+    </div>
+    <div class="col-xs-6 col-md-3">
+      <a (click)="show('mypublic')" class="thumbnail">
+        <img src="../../assets/img/myopen.png" alt="My Public Tabs"> My Public Tabs
+      </a>
+    </div>
+    <div class="col-xs-6 col-md-3">
+      <a (click)="show('private')" class="thumbnail">
+        <img src="../../assets/img/private.png" alt="My Private Tabs"> My Private Tabs
+      </a>
+    </div>
   </div>
-
-  <div class="col-xs-6 col-md-3">
-    <a href="" class="thumbnail">
-      <img src="http://placehold.it/350x150" alt="Favorites">
-    </a>
+  <div id="PublicTabTable" *ngIf="showTable=='public'">
+    <h5 id="PublicTabs">Public Tabs:</h5>
+    <div class="listTable">
+      <div *ngIf="allTabs == null || allTabs.length == 0">
+        <h6>There Are no public tabs available... Sorry :(</h6>
+      </div>
+      <table *ngIf="allTabs != null && allTabs.length > 0" id="allTabs" class="table table-hover">
+        <thead>
+          <tr>
+            <th>Song Name</th>
+            <th>Song Artist</th>
+            <th>Tab Description</th>
+            <th>Author</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let t of allTabs" (click)='goToTab(t)' routerLink='../TabView'>
+            <td>{{t.song}}</td>
+            <td>{{t.artist}}</td>
+            <td>{{t.desc}}</td>
+            <td>{{t.author}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-
-  <div class="col-xs-6 col-md-3">
-    <a href="" class="thumbnail">
-      <img src="http://placehold.it/350x150" alt="Recently Viewed">
-    </a>
-  </div>
-
-  <div class="col-xs-6 col-md-3">
-    <a href="" class="thumbnail">
-      <img src="http://placehold.it/350x150" alt="Recently Added">
-    </a>
-  </div>
-
-  <div class="col-xs-6 col-md-3">
-    <a href="" class="thumbnail">
-      <img src="http://placehold.it/350x150" alt="Random Tab">
-    </a>
-  </div>
-
-  <div class="col-xs-6 col-md-3">
-    <a href="" class="thumbnail">
-      <img src="http://placehold.it/350x150" alt="Top Tabs">
-    </a>
-  </div>
-
-</div>-->
-  <h5>Public Tabs:</h5>
-  <div *ngIf="allTabs == null || allTabs.length == 0">
-    <h5>There Are no public tabs available... Sorry :(</h5>
-  </div>
-  <table *ngIf="allTabs != null && allTabs.length > 0" id="allTabs" class="table table-hover">
-    <thead>
-      <tr>
-        <th>Song Name</th>
-        <th>Song Artist</th>
-        <th>Tab Description</th>
-        <th>Author</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let t of allTabs" (click)='goToTab(t)' routerLink='../TabView'>
-        <td>{{t.song}}</td>
-        <td>{{t.artist}}</td>
-        <td>{{t.desc}}</td>
-        <td>{{t.author}}</td>
-      </tr>
-    </tbody>
-  </table>
   <div *ngIf="authService.loggedIn()">
-    <h5>My Private Tabs:</h5>
-    <table *ngIf="myPrivTabs != null && myPrivTabs.length > 0" id="myPrivTabs" class="table table-hover">
-      <thead>
-        <tr>
-          <th>Song Name</th>
-          <th>Song Artist</th>
-          <th>Tab Description</th>
-          <th>Author</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let t of myPrivTabs" (click)='goToTab(t)' routerLink='../TabView'>
-          <td>{{t.song}}</td>
-          <td>{{t.artist}}</td>
-          <td>{{t.desc}}</td>
-          <td>{{t.author}}</td>
-        </tr>
-      </tbody>
-    </table>
-    <div *ngIf="myPrivTabs == null || myPrivTabs.length == 0">
-      <h5>
-        You have no private tabs!
-      </h5>
-      <button class="btn btn-primary btn-lg" routerLink="../AddTab">Create A Tab!</button>
+    <div id="PrivateTabTable" *ngIf="showTable=='private'">
+      <h5 id="MyPrivateTabs">My Private Tabs:</h5>
+      <div class="listTable">
+        <table *ngIf="myPrivTabs != null && myPrivTabs.length > 0" id="myPrivTabs" class="table table-hover">
+          <thead>
+            <tr>
+              <th>Song Name</th>
+              <th>Song Artist</th>
+              <th>Tab Description</th>
+              <th>Author</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let t of myPrivTabs" (click)='goToTab(t)' routerLink='../TabView'>
+              <td>{{t.song}}</td>
+              <td>{{t.artist}}</td>
+              <td>{{t.desc}}</td>
+              <td>{{t.author}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div *ngIf="myPrivTabs == null || myPrivTabs.length == 0">
+          <h6>
+            You have no private tabs!
+          </h6>
+          <button class="btn btn-warning btn-block btn-lg" routerLink="../AddTab">Create A Tab!</button>
+        </div>
+      </div>
     </div>
-    <h5>My Public Tabs:</h5>
-    <table *ngIf="myPubTabs != null && myPubTabs.length > 0" id="myPubTabs" class="table table-hover">
-      <thead>
-        <tr>
-          <th>Song Name</th>
-          <th>Song Artist</th>
-          <th>Tab Description</th>
-          <th>Author</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let t of myPubTabs" (click)='goToTab(t)' routerLink='../TabView'>
-          <td>{{t.song}}</td>
-          <td>{{t.artist}}</td>
-          <td>{{t.desc}}</td>
-          <td>{{t.author}}</td>
-        </tr>
-      </tbody>
-    </table>
-    <div *ngIf="myPubTabs == null || myPubTabs.length == 0">
-      <h5>
-        You have no private tabs!
-      </h5>
-      <button class="btn btn-primary btn-lg" routerLink="../AddTab">Create A Tab!</button>
+    <div id="MyPublicTabTable" *ngIf="showTable=='mypublic'">
+      <h5 id="MyPublicTabs">My Public Tabs:</h5>
+      <div class="listTable">
+        <table *ngIf="myPubTabs != null && myPubTabs.length > 0" id="myPubTabs" class="table table-hover">
+          <thead>
+            <tr>
+              <th>Song Name</th>
+              <th>Song Artist</th>
+              <th>Tab Description</th>
+              <th>Author</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let t of myPubTabs" (click)='goToTab(t)' routerLink='../TabView'>
+              <td>{{t.song}}</td>
+              <td>{{t.artist}}</td>
+              <td>{{t.desc}}</td>
+              <td>{{t.author}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div *ngIf="myPubTabs == null || myPubTabs.length == 0">
+          <h6>
+            You have no public tabs!
+          </h6>
+          <button class="btn btn-warning btn-lg btn-block" routerLink="../AddTab">Create A Tab!</button>
+        </div>
+      </div>
     </div>
   </div>
-  <!--To be implemented Favorites Table-->
-  <!--<table id="favorites" class="table table-hover">-->
-  <!--<thead>-->
-  <!--<tr>-->
-  <!--<td>Song Name</td>-->
-  <!--<td>Song Artist</td>-->
-  <!--<td>Tab Description</td>-->
-  <!--<td>Author</td>-->
-  <!--</tr>-->
-  <!--</thead>-->
-  <!--<tbody>-->
-  <!--<tr *ngFor="let t of favorites" (click)="goToTab(t.id)" >-->
-  <!--<td>{{t.song}}</td>-->
-  <!--<td>{{t.artist}}</td>-->
-  <!--<td>{{t.desc}}</td>-->
-  <!--<td>{{t.author}}</td>-->
-  <!--</tr>-->
-  <!--</tbody>-->
-  <!--</table>-->
+  <div id="MyFavoriteTabTable" *ngIf="showTable=='favorites'">
+    <h5 id="MyFavoriteTabs">My Favorite Tabs:</h5>
+    <div class="listTable">
+      <table *ngIf="myFavTabs != null && myFavTabs.length > 0" id="myFavTabs" class="table table-hover">
+        <thead>
+          <tr>
+            <th>Song Name</th>
+            <th>Song Artist</th>
+            <th>Tab Description</th>
+            <th>Author</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let t of myFavTabs" (click)='goToTab(t)' routerLink='../TabView'>
+            <td>{{t.song}}</td>
+            <td>{{t.artist}}</td>
+            <td>{{t.desc}}</td>
+            <td>{{t.author}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="myFavTabs == null || myFavTabs.length == 0">
+        <h6>
+          You have no favorite tabs!
+        </h6>
+        <button class="btn btn-primary btn-lg btn-block btn-warning" (click)="show('public')">Browse Public Tabs</button>
+      </div>
+    </div>
+  </div>
 </div>

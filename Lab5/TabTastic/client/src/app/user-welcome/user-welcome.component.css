@@ -1,0 +1,15 @@
+h2{
+text-align: center;
+margin-top: 2em;
+margin-bottom: 2em;
+padding: 1em;
+width: 100%;
+border: 2pt solid black;
+border-radius: 5pt;
+}
+
+button{
+    height: 4em;
+    text-align: center;
+    font-size: 2em;
+}
