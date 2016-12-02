@@ -61,6 +61,7 @@ export class AuthService {
             });
 
             this.lockSU.hide();
+            this.router.navigateByUrl('UserWelcome');
 
         });
 
@@ -78,6 +79,7 @@ export class AuthService {
             });
 
             this.lockLI.hide();
+            this.router.navigateByUrl('UserWelcome');
 
         });
 

@@ -50,4 +50,11 @@ router.get('/UserWelcome',function(req,res,next){
 });
 
 
+router.get('/ChordList',function(req,res,next){
+
+    res.render('index.html');
+
+});
+
+
 module.exports = router;

@@ -20,8 +20,8 @@ import { AuthHttp, AuthConfig, AUTH_PROVIDERS, provideAuth } from 'angular2-jwt'
 
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { ChordsComponent } from './chords/chords.component';
 import { UserWelcomeComponent } from './user-welcome/user-welcome.component';
+import { ChordListComponent } from './chord-list/chord-list.component';
 
 
 
@@ -31,7 +31,8 @@ const appRoutes: Routes = [
     { path: 'Home', component: HomepageComponent },
     { path: 'TabView', component: TabViewComponent },
     { path: 'AddTab', component: AddTabComponent, canActivate: [AuthGuardService] },
-    { path: 'UserWelcome', component: UserWelcomeComponent, canActivate: [AuthGuardService] }
+    { path: 'UserWelcome', component: UserWelcomeComponent, canActivate: [AuthGuardService] },
+      { path: 'ChordList', component: ChordListComponent}
 ];
 
 
@@ -42,8 +43,8 @@ const appRoutes: Routes = [
         HomepageComponent,
         TabViewComponent,
         AddTabComponent,
-        ChordsComponent,
         UserWelcomeComponent,
+        ChordListComponent,
     ],
     imports: [
         BrowserModule,

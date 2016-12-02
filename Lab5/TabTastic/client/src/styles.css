@@ -5,6 +5,16 @@ h3{
     font-family: 'Source Sans Pro', sans-serif;
 }
 
+
+h3.main {
+  text-align: center;
+  margin-top: 2em;
+  border: 2pt solid #DDD;
+  border-radius: 5px;
+  padding: 0.5em;
+}
+
+
 p{
     font-family: 'Source Sans Pro', sans-serif;
 }
@@ -23,6 +33,7 @@ a{
 
 h1{
     font-family: 'Source Sans Pro', sans-serif;
+    cursor: pointer;
 }
 
 h5{
@@ -52,4 +63,18 @@ th{
 
 a{
     cursor: pointer;
+}
+
+span.chord{
+position: relative;
+top: -15px;
+left: 15px;
+font-weight: bolder;
+}
+
+
+p.lyrics{
+    line-height: 60px;
+  display: inline;
+  margin-right: -13px;
 }

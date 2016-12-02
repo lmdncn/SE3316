@@ -15,6 +15,7 @@
       <ul class="nav navbar-nav">
         <li [routerLinkActive]="['active']"><a routerLink='Home'>Home <span class="sr-only">(current)</span></a></li>
         <li [routerLinkActive]="['active']"><a routerLink='TabView'>Tab Viewer</a></li>
+                <li [routerLinkActive]="['active']"><a routerLink='ChordList'>Chord List</a></li>
         <li *ngIf="authService.loggedIn()" [routerLinkActive]="['active']"><a routerLink='AddTab'>Add Tab</a></li>
         <!--<li [routerLinkActive]="['active']"><a routerLink='SignIn'>Sign In</a></li>
         <li [routerLinkActive]="['active']"><a routerLink='SignUp'>Sign Up</a></li>-->

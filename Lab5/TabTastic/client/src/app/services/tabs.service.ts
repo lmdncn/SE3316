@@ -46,13 +46,18 @@ export class TabsService {
     let temp = t;
     let index = 0;
     while (index < t.length / 2) {
-      temp = temp.replace('[', '</span><strong>');
-      temp = temp.replace(']', '</strong><span>');
+      temp = temp.replace('[', '</p><span class="chord">');
+      temp = temp.replace(']', '</span><p class="lyrics">');
       index++;
     }
-    temp = "<span>" + temp + "</span>"
+    temp = "<p class='lyrics'>" + temp + "</p>"
     return temp;
   }
+
+
+
+
+
 
 
   getPrivateTab(): Observable<Tab[]> {
@@ -135,5 +140,22 @@ export class TabsService {
     console.error(errMsg);
     return Observable.throw(errMsg);
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
