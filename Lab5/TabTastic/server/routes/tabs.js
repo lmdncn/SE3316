@@ -58,6 +58,7 @@ router.delete('/tabs', authCheck, function (req, res, next) {
 
 router.put('/tabs', authCheck, function (req, res, next) {
 
+    console.log("Putting tab id of "+req.body._id)
 
     Tabs.findById(req.body._id, function (err, t) {
         if (!t)
