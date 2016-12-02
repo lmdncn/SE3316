@@ -11,12 +11,16 @@ var TabSchema = new Schema({
     tab: String,
     dateMade: {
         type: Date,
-        default: Date.now
+        default: Date.now()
     },
     isPublic: {
         type: Boolean,
         default: true
-    }
+    },
+    lastDayRevised: {
+        type: Date,
+        default: Date.now()
+    },
 
 
 

@@ -11,6 +11,7 @@ export class Tab {
     tab: string;
     dateMade:Date;
     isPublic:Boolean;
+    lastDayRevised:Date;
 
     constructor(song: string, artist: string, desc: string, author: string, authorId: string,tab: string, isPublic:Boolean = true) {
         this.song = song;

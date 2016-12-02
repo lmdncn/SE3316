@@ -3,7 +3,7 @@ import { Tab } from '../models/tab';
 import { TabsService } from "../services/tabs.service";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
-import{AuthService} from '../services/auth.service';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -20,7 +20,7 @@ export class AddTabComponent implements OnInit {
   complete: string = 'welcome';
 
 
-  constructor(private tabsService: TabsService, fb: FormBuilder,private authService: AuthService) {
+  constructor(private tabsService: TabsService, fb: FormBuilder, private authService: AuthService) {
     this.tabForm = fb.group({
       song: ['', Validators.required],
       artist: ['', Validators.required],
@@ -35,6 +35,11 @@ export class AddTabComponent implements OnInit {
   }
 
   addTabSubmit() {
+
+if(this.tabForm.value.song == ''){
+  alert("Enter Song Name");
+  return;
+}
 
     this.tabEntry = new Tab(
       this.tabForm.value.song,
@@ -64,6 +69,11 @@ export class AddTabComponent implements OnInit {
 
   changeAddTab() {
     this.tabEntry = null;
+  }
+
+
+  clearForm() {
+ this.tabForm.reset();
   }
 
 }

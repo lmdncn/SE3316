@@ -17,7 +17,7 @@ router.post('/tabs', authCheck, function (req, res, next) {
 
     console.log('posting tab');
 
-    let tab = new Tabs({
+    let tab = new Tabs({ 
         song: req.body.song,
         artist: req.body.artist,
         desc: req.body.desc,
@@ -70,6 +70,7 @@ router.put('/tabs', authCheck, function (req, res, next) {
             t.desc = req.body.desc;
             t.tab = req.body.tab;
             t.isPublic = req.body.isPublic;
+            t.lastDayRevised = Date.now();
 
 
             t.save(function (err) {

@@ -32,6 +32,15 @@
             <th>Tab Author: </th>
             <td>@{{tabsService.openTab.author}}</td>
           </tr>
+          <tr>
+            <th>Date Made: </th>
+            <td>{{tabsService.openTab.dateMade}}</td>
+          </tr>
+          <tr>
+            <th>Last Date Revised: </th>
+            <td>{{tabsService.openTab.lastDayRevised}}</td>
+          </tr>
+
         </table>
         <button *ngIf="!fullScreen" class="btn btn-default btn-block btn-lg btn-primary" (click)="fullscreen(true)">
         Fullscreen View
@@ -48,36 +57,37 @@
     </div>
     <div *ngIf="authService.loggedIn() && tabsService.openTab.authorId == authService.userId && edit == true">
       <h3>Editing Tab!</h3>
-      <button class="btn btn-lg btn-danger btn-block" (click)='cancelEdit()'>Cancel Edit</button>
-     <div id="metaEdit">
-      <div class="form-group">
-        <label class="control-label col-sm-2" for="song">Song Name:</label>
-        <div class="col-sm-10">
-          <input [(ngModel)]="tabsService.openTab.song" type="text" class="form-control" id="song" placeholder="Song...">
+      <button class="btn btn-lg btn-warning btn-block" (click)='cancelEdit()'>Cancel Edit</button>
+      <div id="metaEdit">
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="song">Song Name:</label>
+          <div class="col-sm-10">
+            <input [(ngModel)]="tabsService.openTab.song" type="text" class="form-control" id="song" placeholder="Song...">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="artist">Artist Name:</label>
+          <div class="col-sm-10">
+            <input [(ngModel)]="tabsService.openTab.artist" type="text" class="form-control" id="artist" placeholder="Artist...">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="desc">Tab Description:</label>
+          <div class="col-sm-10">
+            <input [(ngModel)]="tabsService.openTab.desc" type="text" class="form-control" id="desc" placeholder="Description...">
+          </div>
+        </div>
+        <div class="checkbox">
+          <label><input type="checkbox" value="tabsService.openTab.isPublic">Private</label>
         </div>
       </div>
-      
       <div class="form-group">
-        <label class="control-label col-sm-2" for="artist">Artist Name:</label>
-        <div class="col-sm-10">
-          <input [(ngModel)]="tabsService.openTab.artist" type="text" class="form-control" id="artist" placeholder="Artist...">
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="control-label col-sm-2" for="desc">Tab Description:</label>
-        <div class="col-sm-10">
-          <input [(ngModel)]="tabsService.openTab.desc" type="text" class="form-control" id="desc" placeholder="Description...">
-        </div>
-      </div>
-      <div class="checkbox">
-        <label><input type="checkbox" value="tabsService.openTab.isPublic">Private</label>
-      </div>
-      </div>
-      <div class="form-group">
-        <label for="tab">Enter Tab:</label>
+        <label for="tab">Edit Tab:</label>
         <textarea [(ngModel)]="tabsService.openTab.tab" class="form-control" rows="20" id="tab"></textarea>
       </div>
       <button (click)="changeTab()" class="btn btn-success btn-lg btn-block">Submit</button>
+      <button class="btn btn-lg btn-danger btn-block">Delete Tab</button>
     </div>
   </div>
 </div>
