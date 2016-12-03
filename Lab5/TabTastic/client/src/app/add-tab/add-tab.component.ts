@@ -36,10 +36,28 @@ export class AddTabComponent implements OnInit {
 
   addTabSubmit() {
 
-if(this.tabForm.value.song == ''){
-  alert("Enter Song Name");
-  return;
-}
+
+    if (this.tabForm.value.song == '') {
+      alert("Enter Song Name");
+      return;
+    }
+
+    if (this.tabForm.value.artist == '') {
+      alert("Enter Song Artist");
+      return;
+    }
+
+    if (this.tabForm.value.desc == '') {
+      alert("Enter Tab Description");
+      return;
+    }
+
+    if (this.tabForm.value.tab == '') {
+      alert("Enter Tab");
+      return;
+    }
+
+    
 
     this.tabEntry = new Tab(
       this.tabForm.value.song,
@@ -73,7 +91,7 @@ if(this.tabForm.value.song == ''){
 
 
   clearForm() {
- this.tabForm.reset();
+    this.tabForm.reset();
   }
 
 }

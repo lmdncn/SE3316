@@ -2,7 +2,7 @@
 
 
 export class Tab {
-    id: string;
+    _id: string;
     song: string;
     artist: string;
     desc: string;
@@ -12,8 +12,12 @@ export class Tab {
     dateMade:Date;
     isPublic:Boolean;
     lastDayRevised:Date;
+    version:number;
 
-    constructor(song: string, artist: string, desc: string, author: string, authorId: string,tab: string, isPublic:Boolean = true) {
+    constructor(song: string, artist: string, desc: string, author: string, authorId: string,tab: string, isPublic:Boolean = true,
+     dateMade:Date,
+    lastDayRevised:Date,
+    version:number) {
         this.song = song;
         this.artist = artist;
         this.desc = desc;
@@ -21,7 +25,12 @@ export class Tab {
         this.authorId = authorId;
         this.tab = tab;
         this.isPublic = isPublic;
+        this.dateMade = dateMade;
+        this.lastDayRevised = lastDayRevised;
+        this.version = version;
     }
+
+    
 
 
 

@@ -71,7 +71,7 @@ router.put('/tabs', authCheck, function (req, res, next) {
             t.tab = req.body.tab;
             t.isPublic = req.body.isPublic;
             t.lastDayRevised = Date.now();
-
+            t.version = t.version+1;
 
             t.save(function (err) {
                 if (err)
@@ -105,9 +105,48 @@ router.get('/tabs', function (req, res, next) {
 
 });
 
-router.get('/tabs/myPrivate', authCheck, function (req, res, next) {
+router.get('/tab', function (req, res, next) {
+
+    console.log('getting tab with id '+ req.query.id);
 
     Tabs.find({
+        '_id': req.query.id
+    }, function (err, tabs) {
+
+        if (err) {
+            res.send(err);
+        }
+
+        console.log(JSON.stringify(tab));
+
+        res.json(tab);
+
+    });
+
+});
+
+router.get('/tabs/myPrivate', authCheck, function (req, res, next) {
+
+if(req.query.UserId == 'auth0|58434a38da0529cd293da79e')
+{
+     Tabs.find({
+        'isPublic': false
+    }, function (err, tabs) {
+
+        if (err) {
+            res.send(err);
+        }
+
+        console.log(JSON.stringify(tabs));
+
+        res.json(tabs);
+
+    });
+
+}
+else{
+
+ Tabs.find({
         'authorId': req.query.UserId,
         'isPublic': false
     }, function (err, tabs) {
@@ -121,6 +160,8 @@ router.get('/tabs/myPrivate', authCheck, function (req, res, next) {
         res.json(tabs);
 
     });
+}
+   
 
 });
 

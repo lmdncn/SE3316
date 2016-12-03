@@ -24,10 +24,10 @@ export class TabsService {
       .catch(this.handleError);
   }
 
-  getOpenTab():Tab{
-    if(this.openTab == null && this.authService.loggedIn()){
+  getOpenTab(): Tab {
+    if (this.openTab == null && this.authService.loggedIn()) {
       let t = JSON.parse(localStorage.getItem('opentab'));
-      if(t!=null){
+      if (t != null) {
         this.openTab = t;
         return t;
       }
@@ -100,12 +100,13 @@ export class TabsService {
   deleteTab(t) {
     console.log("Deleting Tab" + JSON.stringify(t));
     return this.authHttp.delete("api/tabs" + '/?TabId=' + t._id + '&UserId=' + this.authService.userId).map((res: Response) => res.json());
+
   }
 
 
   setOpentab(t: Tab) {
     this.openTab = t;
-    localStorage.setItem('opentab',JSON.stringify(t));
+    localStorage.setItem('opentab', JSON.stringify(t));
   }
 
   changeTab() {
@@ -118,6 +119,14 @@ export class TabsService {
 
   }
 
+//   updateTab() {
+// console.log("Getting Tab" + JSON.stringify(this.openTab));
+
+//     this.http.get('api/tab?id='+this.openTab._id)
+//       .map((res: Response) => res.json()).subscribe(
+//       tab => { this.setOpentab(tab); }
+//       );
+//   }
 
 
 

@@ -23,8 +23,7 @@ export class AuthService {
             primaryColor: '#BF0B0D',
 
         },
-        socialButtonStyle: 'small',
-        allowSignUp: false
+        socialButtonStyle: 'small'
 
 
     });

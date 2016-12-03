@@ -26,6 +26,10 @@ export class TabViewComponent implements OnInit {
 
   deleteTab() {
     this.tabsService.deleteTab(this.tabsService.openTab).subscribe();
+    this.edit = false;
+    this.tabEditBackup = null;
+    this.tabsService.openTab = null;
+    localStorage.removeItem('opentab');
   }
 
 
@@ -38,7 +42,7 @@ export class TabViewComponent implements OnInit {
     this.edit = b;
     this.tabEditBackup = new Tab(this.tabsService.openTab.song, this.tabsService.openTab.artist,
       this.tabsService.openTab.desc, this.tabsService.openTab.author, this.tabsService.openTab.authorId,
-      this.tabsService.openTab.tab, this.tabsService.openTab.isPublic)
+      this.tabsService.openTab.tab, this.tabsService.openTab.isPublic, this.tabsService.openTab.dateMade,this.tabsService.openTab.lastDayRevised,this.tabsService.openTab.version)
 
 
   }
@@ -47,6 +51,8 @@ export class TabViewComponent implements OnInit {
     this.tabsService.changeTab().subscribe();
     this.edit = false;
     this.tabEditBackup = null;
+
+    this.tabsService.openTab.version = this.tabsService.openTab.version+1 ;
   }
 
   cancelEdit() {

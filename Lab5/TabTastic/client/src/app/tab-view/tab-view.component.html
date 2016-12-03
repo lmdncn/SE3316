@@ -8,7 +8,7 @@
 </div>
 <div *ngIf="tabsService.openTab !=null">
   <div id="tabView" class="container">
-    <div *ngIf="authService.loggedIn() && tabsService.openTab.authorId == authService.userId && edit == false">
+    <div *ngIf="authService.loggedIn() && (tabsService.openTab.authorId == authService.userId || authService.userId == 'auth0|58434a38da0529cd293da79e')   && edit == false">
       <h3>This Tab Belongs To You!</h3>
       <button class="btn btn-lg btn-warning btn-block" (click)='editTab(true)'>Edit Tab</button>
     </div>
@@ -40,6 +40,14 @@
             <th>Last Date Revised: </th>
             <td>{{tabsService.openTab.lastDayRevised}}</td>
           </tr>
+           <tr>
+            <th>Version: </th>
+            <td>{{tabsService.openTab.version}}.0</td>
+          </tr>
+           <tr>
+            <th>Public: </th>
+            <td>{{tabsService.openTab.isPublic}}</td>
+          </tr>
 
         </table>
         <button *ngIf="!fullScreen" class="btn btn-default btn-block btn-lg btn-primary" (click)="fullscreen(true)">
@@ -55,7 +63,7 @@
         <button class="btn btn-success btn-lg btn-block" routerLink="../Home">Select A Diffrent Tab</button>
       </div>
     </div>
-    <div *ngIf="authService.loggedIn() && tabsService.openTab.authorId == authService.userId && edit == true">
+    <div *ngIf="authService.loggedIn() && (tabsService.openTab.authorId == authService.userId || authService.userId == 'auth0|58434a38da0529cd293da79e') && edit == true">
       <h3>Editing Tab!</h3>
       <button class="btn btn-lg btn-warning btn-block" (click)='cancelEdit()'>Cancel Edit</button>
       <div id="metaEdit">
@@ -79,7 +87,7 @@
           </div>
         </div>
         <div class="checkbox">
-          <label><input type="checkbox" value="tabsService.openTab.isPublic">Private</label>
+          <label><input type="checkbox" [(ngModel)]="tabsService.openTab.isPublic">Public</label>
         </div>
       </div>
       <div class="form-group">
@@ -87,7 +95,7 @@
         <textarea [(ngModel)]="tabsService.openTab.tab" class="form-control" rows="20" id="tab"></textarea>
       </div>
       <button (click)="changeTab()" class="btn btn-success btn-lg btn-block">Submit</button>
-      <button class="btn btn-lg btn-danger btn-block">Delete Tab</button>
+      <button class="btn btn-lg btn-danger btn-block" (click)="deleteTab()">Delete Tab</button>
     </div>
   </div>
 </div>
