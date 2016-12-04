@@ -34,15 +34,14 @@ router.get('/dmca', function (req, res, next) {
 });
 
 
-router.post('/dcma', authCheck, function (req, res, next) {
+router.post('/dmca', function (req, res, next) {
 
 
-    console.log('posting dcma');
+    console.log('posting dcma '+req.body.title);
 
-    let dmca = new Dmca({ 
-        title: req.body.title,
-        body: req.body.body
-    });
+    let dmca = new Dmca();
+       dmca.title = req.body.title,
+        dmca.body = req.body.body
 
 
     dmca.save(function (err) {
