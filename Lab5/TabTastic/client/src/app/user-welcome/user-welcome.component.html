@@ -7,4 +7,44 @@
 <button routerLink="../Home" class="btn btn-block btn-default btn-success">
   View list of tabs
 </button>
+
+
+<div *ngIf="authService.userId == 'auth0|58434a38da0529cd293da79e'" >
+
+<h3 class="main">
+  DMCA Tools
+</h3>
+
+<h4>
+  Requests:
+</h4>
+
+<h5 *ngIf="dmcas == null || dmcas.length <1" >
+  There are no available requests!
+</h5>
+
+<div *ngFor="let d of dmcas" >
+  <h5>
+    Title: {{d.title}}
+  </h5>
+
+<p>
+Body: <br> {{d.body}}
+</p>
+
 </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+

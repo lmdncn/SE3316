@@ -17,6 +17,13 @@ export class TabsService {
   }
 
 
+  getDmcas(){
+    return this.http.get('api/dmca')
+      .map((res) => res.json())
+      .catch(this.handleError);
+  }
+
+
   getTabs(): Observable<Tab[]> {
 
     return this.http.get(this.tabApi)
@@ -50,7 +57,7 @@ export class TabsService {
       temp = temp.replace(']', '</span><p class="lyrics">');
       index++;
     }
-    temp = "<p class='lyrics'>" + temp + "</p>"
+    temp = "<pre><p class='lyrics'>" + temp + "</p></pre>"
     return temp;
   }
 

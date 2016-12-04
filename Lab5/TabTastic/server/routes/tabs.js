@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Tabs = require('../models/tab');
 var sanitizer = require('sanitizer');
-
+var Dmca = require('../models/dmca');
 const jwt = require('express-jwt');
 
 // Token Valid
@@ -10,6 +10,54 @@ const authCheck = jwt({
     secret: new Buffer('gPce_rvrT44vS-A81DesGEa5PUYOQdmssls9NiFyeYFu3VdZZDgxLal-MCRB-IKi', 'base64'),
     audience: 'yOHOPEsMPE4f5l5JbRFuMDOO188oxW9X'
 });
+
+
+
+
+
+
+
+router.get('/dmca', function (req, res, next) {
+
+    console.log('getting dmcas');
+
+    Dmca.find({}, function (err, dmcas) {
+
+        if (err) {
+            res.send(err);
+        }
+
+        res.json(dmcas);
+
+    });
+
+});
+
+
+router.post('/dcma', authCheck, function (req, res, next) {
+
+
+    console.log('posting dcma');
+
+    let dmca = new Dmca({ 
+        title: req.body.title,
+        body: req.body.body
+    });
+
+
+    dmca.save(function (err) {
+        if (err) {
+
+            res.send(err);
+        }
+
+        res.json(201, dmca);
+    });
+
+});
+
+
+
 
 
 router.post('/tabs', authCheck, function (req, res, next) {
@@ -23,12 +71,12 @@ router.post('/tabs', authCheck, function (req, res, next) {
         desc: req.body.desc,
         author: req.body.author,
         authorId: req.body.authorId,
-        tab: req.body.tab,
+        tab: sanitizer.escape(req.body.tab),
         isPublic: req.body.isPublic
     });
 
 
-    console.log('made tab' + JSON.stringify(tab));
+    // console.log('made tab' + JSON.stringify(tab));
 
     tab.save(function (err) {
         if (err) {
@@ -43,7 +91,7 @@ router.post('/tabs', authCheck, function (req, res, next) {
 
 router.delete('/tabs', authCheck, function (req, res, next) {
 
-    console.log('Delete the tab with id ' + req.query.TabId);
+    // console.log('Delete the tab with id ' + req.query.TabId);
 
     Tabs.remove({
         '_id': req.query.TabId,
@@ -58,7 +106,7 @@ router.delete('/tabs', authCheck, function (req, res, next) {
 
 router.put('/tabs', authCheck, function (req, res, next) {
 
-    console.log("Putting tab id of "+req.body._id)
+    // console.log("Putting tab id of "+req.body._id)
 
     Tabs.findById(req.body._id, function (err, t) {
         if (!t)
@@ -68,7 +116,7 @@ router.put('/tabs', authCheck, function (req, res, next) {
             t.song = req.body.song;
             t.artist = req.body.artist;
             t.desc = req.body.desc;
-            t.tab = req.body.tab;
+            t.tab = sanitizer.escape(req.body.tab);
             t.isPublic = req.body.isPublic;
             t.lastDayRevised = Date.now();
             t.version = t.version+1;
@@ -87,7 +135,7 @@ router.put('/tabs', authCheck, function (req, res, next) {
 
 router.get('/tabs', function (req, res, next) {
 
-    console.log('getting tabs');
+    // console.log('getting tabs');
 
     Tabs.find({
         'isPublic': true
@@ -97,7 +145,7 @@ router.get('/tabs', function (req, res, next) {
             res.send(err);
         }
 
-        console.log(JSON.stringify(tabs));
+        // console.log(JSON.stringify(tabs));
 
         res.json(tabs);
 
@@ -117,7 +165,7 @@ router.get('/tab', function (req, res, next) {
             res.send(err);
         }
 
-        console.log(JSON.stringify(tab));
+        // console.log(JSON.stringify(tab));
 
         res.json(tab);
 
@@ -137,7 +185,7 @@ if(req.query.UserId == 'auth0|58434a38da0529cd293da79e')
             res.send(err);
         }
 
-        console.log(JSON.stringify(tabs));
+        // console.log(JSON.stringify(tabs));
 
         res.json(tabs);
 
@@ -155,7 +203,7 @@ else{
             res.send(err);
         }
 
-        console.log(JSON.stringify(tabs));
+        // console.log(JSON.stringify(tabs));
 
         res.json(tabs);
 
@@ -176,7 +224,7 @@ router.get('/tabs/myPublic', authCheck, function (req, res, next) {
             res.send(err);
         }
 
-        console.log(JSON.stringify(tabs));
+        // console.log(JSON.stringify(tabs));
 
         res.json(tabs);
 

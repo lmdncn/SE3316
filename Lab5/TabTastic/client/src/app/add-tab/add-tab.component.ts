@@ -66,8 +66,10 @@ export class AddTabComponent implements OnInit {
       this.authService.nickname,
       this.authService.userId,
       this.tabForm.value.tab,
-      !(this.tabForm.value.private)
-    );
+      !(this.tabForm.value.private),
+      null,
+      null,
+      1);
 
     this.complete = 'nothing';
   }
@@ -91,7 +93,8 @@ export class AddTabComponent implements OnInit {
 
 
   clearForm() {
-    this.tabForm.reset();
+    if(confirm("Are You sure you want to clear?")){
+    this.tabForm.reset();}
   }
 
 }

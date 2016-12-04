@@ -23,7 +23,6 @@ h3 {
 }
 
 #tab {
-  height: 700px;
   border: 2pt solid #DDD;
   width: 100%;
   padding: 0.8em;
@@ -66,8 +65,8 @@ button {
 
 .overlay {
   /* Height & width depends on how you want to reveal the overlay (see JS below) */
-  height: 80px;
-  width: 0;
+  height: 100%;
+  width: 100%;
   position: fixed;
   /* Stay in place */
   z-index: 45;
@@ -91,16 +90,16 @@ button {
   position: relative;
   top: 10%;
   /* 10% from the top */
-  width: 60%;
+  width: 90%;
   /* 100% width */
   margin: auto;
   overflow-y: scroll;
   height: 70%;
   text-align: left;
   /* Centered text/links */
-  margin-top: 30px;
+  margin-top: 10px;
   /* 30px top margin to avoid conflict with the close button on smaller screens */
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   background-color: white;
 }
 

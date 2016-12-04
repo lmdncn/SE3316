@@ -66,15 +66,12 @@ a{
 }
 
 span.chord{
-position: relative;
-top: -15px;
-left: 15px;
+position: absolute;
 font-weight: bolder;
 }
 
 
 p.lyrics{
-    line-height: 60px;
+    line-height: 50px;
   display: inline;
-  margin-right: -13px;
 }
