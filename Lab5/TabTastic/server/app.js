@@ -1,5 +1,3 @@
-'use strict';
-
 // HTTP server using Express to handle incoming requests
 var express = require('express');
 var app = express();

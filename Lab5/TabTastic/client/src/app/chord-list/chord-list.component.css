@@ -1,7 +1,11 @@
-a.thumbnail{
+.thumbnail{
 
 height: 500px;
 
+}
+
+.row{
+    margin: auto;
 }
 
 img{
@@ -10,7 +14,13 @@ img{
 
 ul{
     list-style-type: none;
+    margin: auto;
 }
+
+li{
+    margin: auto;
+}
+
 
 
 
