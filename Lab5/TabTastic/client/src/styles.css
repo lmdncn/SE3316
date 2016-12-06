@@ -75,3 +75,15 @@ p.lyrics{
     line-height: 50px;
   display: inline;
 }
+
+
+@media screen and (min-width: 760px) {
+    
+    p.lyrics{
+    line-height: 50px;
+  display: inline;
+  font-size: 1.4em;
+  letter-spacing: 2px;
+}
+    
+}

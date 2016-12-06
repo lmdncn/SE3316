@@ -58,6 +58,14 @@ export class TabsService {
       index++;
     }
     temp = "<pre><p class='lyrics'>" + temp + "</p></pre>"
+    
+    index=0;
+     while (index < t.length / 2) {
+       temp = temp.replace('<p class="lyrics"></p>', '<p class="lyrics">-----------</p>');
+       temp = temp.replace('<p class="lyrics"> </p>', '<p class="lyrics">-----------</p>');
+       temp = temp.replace('<p class="lyrics">  </p>', '<p class="lyrics">-----------</p>');
+       index++;
+     }
     return temp;
   }
 
@@ -76,7 +84,6 @@ export class TabsService {
 
   getMyPrivateTabs() {
 
-    console.log("Getting tabs by " + this.authService.userId);
     return this.authHttp.get('api/tabs/myPrivate' + '/?UserId=' + this.authService.userId)
       .map((res: Response) => res.json());
 
@@ -84,7 +91,6 @@ export class TabsService {
 
   getMyPublicTabs() {
 
-    console.log("Getting tabs by " + this.authService.userId);
     return this.authHttp.get('api/tabs/myPublic' + '/?UserId=' + this.authService.userId)
       .map((res: Response) => res.json());
 
@@ -97,7 +103,7 @@ export class TabsService {
     let headers: Headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    console.log("Posting to db" + JSON.stringify(t));
+    // console.log("Posting to db" + JSON.stringify(t));
 
     return this.authHttp.post("api/tabs", JSON.stringify(t), options).map((res) => res.json());
 
@@ -105,7 +111,7 @@ export class TabsService {
 
 
   deleteTab(t) {
-    console.log("Deleting Tab" + JSON.stringify(t));
+    // console.log("Deleting Tab" + JSON.stringify(t));
     return this.authHttp.delete("api/tabs" + '/?TabId=' + t._id + '&UserId=' + this.authService.userId).map((res: Response) => res.json());
 
   }
@@ -143,7 +149,7 @@ export class TabsService {
   private handleError(error: Response | any) {
     // In a real world app, we might use a remote logging infrastructure
 
-    console.log("Error with tab retrieval");
+    // console.log("Error with tab retrieval");
 
     let errMsg: string;
     if (error instanceof Response) {
