@@ -39,7 +39,7 @@ router.post('/dmca', function (req, res, next) {
 
     console.log('posting dcma '+req.body.title);
 
-    let dmca = new Dmca();
+    var dmca = new Dmca();
        dmca.title = req.body.title,
         dmca.body = req.body.body
 
@@ -64,7 +64,7 @@ router.post('/tabs', authCheck, function (req, res, next) {
 
     console.log('posting tab');
 
-    let tab = new Tabs({ 
+    var tab = new Tabs({ 
         song: req.body.song,
         artist: req.body.artist,
         desc: req.body.desc,

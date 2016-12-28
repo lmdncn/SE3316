@@ -52,7 +52,10 @@ h6 {
 }
 
 #landing {
-  border: 2pt solid darkred;
+  border: 2pt solid #DDD;
+    -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
   margin: 2em auto;
   padding: 4em;  
 }
@@ -67,9 +70,9 @@ h6 {
   border-radius: 0px;
   font-family: Georgia;
   color: black;
-  font-size: 1e, ;
+  font-size: 1em ;
   padding: 5px 10px 5px 10px;
-  border: solid #000000 1px;
+  border: solid #DDD 1px;
   text-decoration: none;
 }
 
